@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="org.example.disp_gradeTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2023-03-07T04:31:52" hostname="DESKTOP-HV7JIS6" time="0.228">
+  <properties/>
+  <testcase name="disp()" classname="org.example.disp_gradeTest" time="0.228"/>
+  <system-out><![CDATA[Course  Student ID  Year  sem  Grade  Status         
+CS535   2020CSB1061 2022  1    B    completed   
+CS535   2020CSB1060 2022  1    A    completed   
+No Students registered !!!
+]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

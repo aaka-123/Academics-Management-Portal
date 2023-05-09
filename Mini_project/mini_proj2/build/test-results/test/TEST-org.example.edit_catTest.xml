@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="org.example.edit_catTest" tests="2" skipped="0" failures="0" errors="0" timestamp="2023-03-07T04:31:52" hostname="DESKTOP-HV7JIS6" time="0.216">
+  <properties/>
+  <testcase name="cat_delete()" classname="org.example.edit_catTest" time="0.161"/>
+  <testcase name="add_to_cat()" classname="org.example.edit_catTest" time="0.053"/>
+  <system-out><![CDATA[Course HS301 has been deleted from catalogue!!!!
+insert into course_cat values('Industrial Management','HS301',3,1,0,3,'CSE','PE')
+Course HS301 has been added to course catalogue!!
+]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

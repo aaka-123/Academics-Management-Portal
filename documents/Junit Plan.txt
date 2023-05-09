@@ -1,0 +1,19 @@
+Junit Plan
+
+1. Firstly the identification of  the class or group of classes to be tested in JUNit Plan Tests is done.
+2. Identify the class's or classes' anticipated behavior. This required talking with stakeholders and developers while also analysing the documentation, requirements, and specifications.
+3.Each test case should cover a particular scenario or use case and contain inputs, anticipated outcomes, and any setup or teardown that may be required.
+4.Check the results after running the tests. If the bug is discovered, cover the entire code with alternative scenarios to ensure acceptance.
+
+Example 
+
+AdminTest class
+
+void student() throws a SQLException {
+Student student=new Student(); assertEquals(0,student.student("Abhay","2020csb1123","8894576580"));
+ assertEquals(1,student.student("aakash","2020csb1060","8894577980"));
+}
+
+It accepts a result of 0 for the first input and 1 for the second result, and it covers the entire code with several cases to satisfy the acceptance criteria 
+
+The other test classes I have cover all the classes and methods in my project in a manner similar to this.

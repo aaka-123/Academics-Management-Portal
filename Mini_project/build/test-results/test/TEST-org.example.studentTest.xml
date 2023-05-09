@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="org.example.studentTest" tests="3" skipped="0" failures="0" errors="0" timestamp="2023-03-07T04:31:55" hostname="DESKTOP-HV7JIS6" time="0.318">
+  <properties/>
+  <testcase name="student_2()" classname="org.example.studentTest" time="0.163"/>
+  <testcase name="student_3()" classname="org.example.studentTest" time="0.152"/>
+  <testcase name="student_4()" classname="org.example.studentTest" time="0.001"/>
+  <system-out><![CDATA[Press 1 to see  your courses and grades:
+Press 2 to register/deregister for a course:
+Press 3 to calculate current CGPA:
+Press 4 to logg out
+Press 1 to register and 2 to deregister for a course:
+Offer Id  Course  year  semester  Instr_id     CGPA Required  type  
+2034       CS546   2023  1         2008CSI1060  0.0              PE    
+2038       HS491   2023  1         2008CSI1060  0.0              E    
+2009       HS507   2023  2         2016CSI1112  0.0              E    
+2017       CS546   2023  2         2016CSI1112  0.0              PE    
+Enter a course offer ID to register:
+Credit limit is exceeding!!!
+
+Press 1 to see  your courses and grades:
+Press 2 to register/deregister for a course:
+Press 3 to calculate current CGPA:
+Press 4 to logg out
+Press 1 to see  your courses and grades:
+Press 2 to register/deregister for a course:
+Press 3 to calculate current CGPA:
+Press 4 to logg out
+Press 1 to register and 2 to deregister for a course:
+Offer ID  Course  Year  sem  grade  Credits_Earned   Status            
+2004      CS302   2023  2    NA      0                running   
+Enter offer_ID to deregister!!
+select status,course_id from student_transcript where stu_id='2020CSB1062' and offr_id=2017
+Enter correct offer id!!!
+
+Press 1 to see  your courses and grades:
+Press 2 to register/deregister for a course:
+Press 3 to calculate current CGPA:
+Press 4 to logg out
+Press 1 to see  your courses and grades:
+Press 2 to register/deregister for a course:
+Press 3 to calculate current CGPA:
+Press 4 to logg out
+]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

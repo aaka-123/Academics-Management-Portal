@@ -1,0 +1,200 @@
+
+
+
+<!DOCTYPE html>
+<html id="htmlId">
+<head>
+  <title>Coverage Report > grad_check</title>
+  <style type="text/css">
+    @import "../../css/coverage.css";
+    @import "../../css/idea.min.css";
+  </style>
+  <script type="text/javascript" src="../../js/highlight.min.js"></script>
+  <script type="text/javascript" src="../../js/highlightjs-line-numbers.min.js"></script>
+</head>
+
+<body>
+<div class="content">
+<div class="breadCrumbs">
+Current scope:     <a href="../../index.html">all classes</a>
+    <span class="separator">|</span>
+    <a href="../index.html">org.example</a>
+</div>
+
+<h1>Coverage Summary for Class: grad_check (org.example)</h1>
+
+<table class="coverageStats">
+<tr>
+  <th class="name">Class</th>
+<th class="coverageStat 
+">
+  Class, %
+</th>
+<th class="coverageStat 
+">
+  Method, %
+</th>
+<th class="coverageStat 
+">
+  Line, %
+</th>
+</tr>
+<tr>
+  <td class="name">grad_check</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (1/1)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (2/2)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    88.6%
+  </span>
+  <span class="absValue">
+    (62/70)
+  </span>
+</td>
+</tr>
+
+</table>
+
+<br/>
+<br/>
+
+
+<pre>
+<code class="sourceCode" id="sourceCode">&nbsp;package org.example;
+&nbsp;
+&nbsp;import java.sql.Connection;
+&nbsp;import java.sql.DriverManager;
+&nbsp;import java.sql.ResultSet;
+&nbsp;import java.sql.Statement;
+&nbsp;import java.util.Scanner;
+&nbsp;
+<b class="fc">&nbsp;public class grad_check {</b>
+&nbsp;    static final String JDBC_DRIVER = &quot;org.postgresql.Driver&quot;;
+&nbsp;    static final String DB_URL = &quot;jdbc:postgresql://localhost:5432/aims&quot;;
+&nbsp;
+&nbsp;    static final String USER = &quot;postgres&quot;;
+&nbsp;    static final String PASS = &quot;postgres&quot;;
+&nbsp;    public boolean grad_check(String id)
+&nbsp;
+<b class="fc">&nbsp;    {id=id.toUpperCase();</b>
+<b class="fc">&nbsp;        boolean x=true;</b>
+<b class="fc">&nbsp;        Connection c = null;</b>
+<b class="fc">&nbsp;        Statement stmt = null;</b>
+&nbsp;        try {
+<b class="fc">&nbsp;            c = DriverManager.getConnection(DB_URL, USER, PASS);</b>
+<b class="fc">&nbsp;            stmt = c.createStatement();</b>
+&nbsp;//            select sum(credits) from student_transcript where stu_id=&#39;2020CSB1060&#39; and type=&#39;PC&#39; and course_id!=&#39;CP301-1&#39; and course_id!=&#39;CP301-2&#39;and course_id!=&#39;CP301-3&#39; and status=&#39;completed
+<b class="fc">&nbsp;            String query=&quot;select sum(credits) from student_transcript where (course_id=&quot; +&quot;\&#39;&quot;+&quot;CP301-1&quot;+&quot;\&#39;&quot;+&quot; or course_id=&quot; +&quot;\&#39;&quot; +&quot;CP301-2&quot; +&quot;\&#39;&quot; +&quot; or course_id=&quot;+&quot;\&#39;&quot;+&quot;CP301-3&quot;+&quot;\&#39;)&quot;+&quot; and status=&quot;+&quot;\&#39;&quot;+&quot;completed&quot;+&quot;\&#39;&quot;+&quot;and stu_id=&quot;+&quot;\&#39;&quot;+id+&quot;\&#39;;&quot;;</b>
+<b class="fc">&nbsp;            String query1=&quot;select sum(credits) from student_transcript where stu_id=&quot;+&quot;\&#39;&quot;+id+&quot;\&#39;&quot;+&quot; and (status=&#39;completed&#39;)&quot;;</b>
+<b class="fc">&nbsp;            String pc=&quot;select sum(credits) from student_transcript where stu_id=&quot;+&quot;\&#39;&quot;+id+&quot;\&#39;&quot;+&quot; and type=&quot;+&quot;\&#39;&quot;+&quot;PC&quot;+&quot;\&#39;&quot;+&quot; and course_id!=&#39;CP301-1&#39; and course_id!=&#39;CP301-2&#39;and course_id!=&#39;CP301-3&#39; and status=&#39;completed&#39; &quot;;</b>
+<b class="fc">&nbsp;            String pe=&quot;select sum(credits) from student_transcript where stu_id=&quot;+&quot;\&#39;&quot;+id+&quot;\&#39;&quot;+&quot; and type=&quot;+&quot;\&#39;&quot;+&quot;PE&quot;+&quot;\&#39;&quot;+&quot; and (status=&#39;completed&#39;)&quot;;</b>
+<b class="fc">&nbsp;            String elec=&quot;select sum(credits) from student_transcript where stu_id=&quot;+&quot;\&#39;&quot;+id+&quot;\&#39;&quot;+&quot; and type=&quot;+&quot;\&#39;&quot;+&quot;E&quot;+&quot;\&#39;&quot;+&quot; and (status=&#39;completed&#39;)&quot;;</b>
+<b class="fc">&nbsp;            System.out.println(query);</b>
+<b class="fc">&nbsp;            System.out.println(pc);</b>
+<b class="fc">&nbsp;              System.out.println(pe);</b>
+<b class="fc">&nbsp;            System.out.println(elec);</b>
+<b class="fc">&nbsp;            int a=0;</b>
+&nbsp;            try{
+<b class="fc">&nbsp;                c = DriverManager.getConnection(DB_URL, USER, PASS);</b>
+<b class="fc">&nbsp;                stmt = c.createStatement();</b>
+<b class="fc">&nbsp;              ResultSet rs=stmt.executeQuery(query);</b>
+<b class="fc">&nbsp;                rs.next();</b>
+<b class="fc">&nbsp;                 a=rs.getInt(1);</b>
+<b class="fc">&nbsp;rs.close();</b>
+<b class="fc">&nbsp;                System.out.println(&quot;q1&quot;);</b>
+&nbsp;            } catch (Exception e) {}
+<b class="nc">&nbsp;</b>
+&nbsp;            if(a&lt;9) {x=false;System.out.println(&quot;BTP course not done so cant graduate!!&quot;);}
+&nbsp;            else{
+<b class="fc">&nbsp;                int tc=0,pc1=0,pe1=0,elec1=0;</b>
+&nbsp;                try{
+<b class="fc">&nbsp;                    c = DriverManager.getConnection(DB_URL, USER, PASS);</b>
+<b class="nc">&nbsp;                    stmt = c.createStatement();</b>
+&nbsp;                    ResultSet rs=stmt.executeQuery(query1);
+<b class="fc">&nbsp;                    rs.next();</b>
+&nbsp;                     tc=rs.getInt(1);
+<b class="fc">&nbsp;                     tc=tc-a;</b>
+<b class="fc">&nbsp;                   System.out.println(tc);</b>
+<b class="fc">&nbsp;                   rs.close();</b>
+<b class="fc">&nbsp;                } catch (Exception e) {}</b>
+<b class="fc">&nbsp;                try{</b>
+<b class="fc">&nbsp;                    c = DriverManager.getConnection(DB_URL, USER, PASS);</b>
+<b class="fc">&nbsp;                    stmt = c.createStatement();</b>
+<b class="fc">&nbsp;                   ResultSet rs=stmt.executeQuery(pc);</b>
+&nbsp;                    rs.next();
+<b class="nc">&nbsp;                     pc1=rs.getInt(1);</b>
+&nbsp;                    System.out.println(pc1);
+&nbsp;                    rs.close();
+<b class="fc">&nbsp;                }</b>
+&nbsp;                catch (Exception e) {}
+<b class="fc">&nbsp;                try{</b>
+<b class="fc">&nbsp;                    c = DriverManager.getConnection(DB_URL, USER, PASS);</b>
+<b class="fc">&nbsp;                    stmt = c.createStatement();</b>
+<b class="fc">&nbsp;                   ResultSet rs=stmt.executeQuery(pe);</b>
+<b class="fc">&nbsp;                    rs.next();</b>
+<b class="fc">&nbsp;                     pe1=rs.getInt(1);</b>
+<b class="fc">&nbsp;                    System.out.println(pe1);</b>
+&nbsp;rs.close();
+<b class="fc">&nbsp;                }</b>
+&nbsp;                catch (Exception e) {}
+<b class="fc">&nbsp;                try{</b>
+<b class="fc">&nbsp;                    c = DriverManager.getConnection(DB_URL, USER, PASS);</b>
+<b class="fc">&nbsp;                    stmt = c.createStatement();</b>
+<b class="fc">&nbsp;                   ResultSet rs=stmt.executeQuery(elec);</b>
+<b class="fc">&nbsp;                    rs.next();</b>
+<b class="fc">&nbsp;                     elec1=rs.getInt(1);</b>
+<b class="fc">&nbsp;                    System.out.println(elec1);rs.close();</b>
+&nbsp;                } catch (Exception e) {}
+<b class="fc">&nbsp;                if(tc&lt;120){x=false; System.out.println(&quot;Your total credits are less than 120 so can&#39;t graduate!!!&quot;);}</b>
+&nbsp;                else if(pc1&lt;90) {x=false;System.out.println(&quot;Your program core  are less than 90 credits so can&#39;t graduate!!!&quot;);}
+<b class="fc">&nbsp;                else if(pe1&lt;30){x=false;System.out.println(&quot;Your program elective  are less than 30 credits so can&#39;t graduate!!!&quot;);}</b>
+<b class="fc">&nbsp;                else if(elec1&lt;30){x=false;System.out.println(&quot;Your electives  are less than 30 credits so can&#39;t graduate!!!&quot;);}</b>
+<b class="fc">&nbsp;                else{</b>
+<b class="fc">&nbsp;                    x=false;</b>
+<b class="fc">&nbsp;                    System.out.println(&quot;Eligible for graduation&quot;);</b>
+<b class="fc">&nbsp;                }stmt.close();c.close();</b>
+<b class="fc">&nbsp;            }</b>
+<b class="fc">&nbsp;        } catch (Exception e) {System.err.println(e.getClass().getName() + &quot;: &quot; + e.getMessage());System.exit(0);}return x;}</b>
+<b class="nc">&nbsp;</b>
+<b class="nc">&nbsp;}</b>
+</code>
+</pre>
+</div>
+
+<script type="text/javascript">
+(function() {
+    var msie = false, msie9 = false;
+    /*@cc_on
+      msie = true;
+      @if (@_jscript_version >= 9)
+        msie9 = true;
+      @end
+    @*/
+
+    if (!msie || msie && msie9) {
+      hljs.highlightAll()
+      hljs.initLineNumbersOnLoad();
+    }
+})();
+</script>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2023-03-06 21:50</div>
+</div>
+</body>
+</html>

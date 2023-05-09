@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="org.example.drop_offerTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2023-03-07T04:31:52" hostname="DESKTOP-HV7JIS6" time="0.069">
+  <properties/>
+  <testcase name="drop()" classname="org.example.drop_offerTest" time="0.069"/>
+  <system-out><![CDATA[Course select course_id from course_offer where offr_id=2007 has been deregistered!!
+]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

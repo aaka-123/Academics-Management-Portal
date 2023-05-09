@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="org.example.facultyTest" tests="7" skipped="0" failures="0" errors="0" timestamp="2023-03-07T04:31:52" hostname="DESKTOP-HV7JIS6" time="0.667">
+  <properties/>
+  <testcase name="faculty_1()" classname="org.example.facultyTest" time="0.167"/>
+  <testcase name="faculty_2()" classname="org.example.facultyTest" time="0.112"/>
+  <testcase name="faculty_3()" classname="org.example.facultyTest" time="0.097"/>
+  <testcase name="faculty_4()" classname="org.example.facultyTest" time="0.103"/>
+  <testcase name="faculty_5()" classname="org.example.facultyTest" time="0.054"/>
+  <testcase name="faculty_6()" classname="org.example.facultyTest" time="0.002"/>
+  <testcase name="faculty_7()" classname="org.example.facultyTest" time="0.12"/>
+  <system-out><![CDATA[Press 1 to see  your ongoing courses and grades:
+Press 2 to offer/register a course or deregister a course:
+Press 3  to see grades for different academic courses:
+Press 4  to see grades for a particular student:
+Press 5 to upload grades:
+Press 6 to logg out
+No courses !!!
+Enter Offer Id of the course to see grade: 
+No Students registered !!!
+Press 1 to see  your ongoing courses and grades:
+Press 2 to offer/register a course or deregister a course:
+Press 3  to see grades for different academic courses:
+Press 4  to see grades for a particular student:
+Press 5 to upload grades:
+Press 6 to logg out
+Press 1 to see  your ongoing courses and grades:
+Press 2 to offer/register a course or deregister a course:
+Press 3  to see grades for different academic courses:
+Press 4  to see grades for a particular student:
+Press 5 to upload grades:
+Press 6 to logg out
+Press 1 to register/offer a course:
+Press 2 to deregister a course:
+select name,course_id,l,t,p,c,dept,type from course_cat 
+Name                                             Course Id  L  T  P  C  Department  Type  
+maths                                             MA202     2  1  3  3  CSE         PE    
+Industrial Management                             HS301     3  1  0  3  CSE         PE    
+PROGRAMMING PARADIGMS AND PRAGMATICS              CS202     3  1  2  4  CSE         PC    
+COMPUTER ARCHITECTURE                             CS204     3  1  2  4  CSE         PC    
+DATABASES                                         CS301     3  1  2  4  CSE         PC    
+ANALYSIS AND DESIGN OF ALGORITHMS                 CS302     3  1  0  3  CSE         PC    
+Digital images                                    CS517     3  1  2  3  CSE         PE    
+Computer vision                                   CS535     3  1  2  3  CSE         PE    
+Machine learning                                  CS546     3  1  2  3  CSE         PE    
+Fantasy                                           HS491     3  1  2  3  CSE         E    
+professional ethics                               HS507     3  1  2  3  CSE         E    
+Capstone                                          CP301-3     0  0  0  3           PC    
+Capstone                                          CP301-2     0  0  0  3           PC    
+Capstone                                          CP301-1     0  0  0  3           PC    
+Enter course ID of the course to offer:
+Enter the CGPA requirement for the course : 
+The course is already being offered in this sem!!!
+Press 1 to see  your ongoing courses and grades:
+Press 2 to offer/register a course or deregister a course:
+Press 3  to see grades for different academic courses:
+Press 4  to see grades for a particular student:
+Press 5 to upload grades:
+Press 6 to logg out
+Press 1 to see  your ongoing courses and grades:
+Press 2 to offer/register a course or deregister a course:
+Press 3  to see grades for different academic courses:
+Press 4  to see grades for a particular student:
+Press 5 to upload grades:
+Press 6 to logg out
+Press 1 to register/offer a course:
+Press 2 to deregister a course:
+Offer Id  Course  year  semester  CGPA Required  
+2005       CP301-2   2023  1         0              
+2034       CS546   2023  1         0  
+Enter Offer Id of the course to delete: 
+Course select course_id from course_offer where offr_id=2004 has been deregistered!!
+Press 1 to see  your ongoing courses and grades:
+Press 2 to offer/register a course or deregister a course:
+Press 3  to see grades for different academic courses:
+Press 4  to see grades for a particular student:
+Press 5 to upload grades:
+Press 6 to logg out
+Press 1 to see  your ongoing courses and grades:
+Press 2 to offer/register a course or deregister a course:
+Press 3  to see grades for different academic courses:
+Press 4  to see grades for a particular student:
+Press 5 to upload grades:
+Press 6 to logg out
+Offer Id  Course  year  semester  Instr_id     CGPA Required  type  
+2011       CP301-3   2023  2         2016CSI1112  0              PC    
+2005       CP301-2   2023  1         2008CSI1060  0              PC    
+2034       CS546   2023  1         2008CSI1060  0              PE    
+2009       HS507   2023  2         2016CSI1112  0              E    
+2017       CS546   2023  2         2016CSI1112  0              PE    
+2010       CP301-1   2022  2         2016CSI1112  5              PC    
+Enter Offer Id of the course for which you want to see the grades.
+No Students registered !!!
+Press 1 to see  your ongoing courses and grades:
+Press 2 to offer/register a course or deregister a course:
+Press 3  to see grades for different academic courses:
+Press 4  to see grades for a particular student:
+Press 5 to upload grades:
+Press 6 to logg out
+Press 1 to see  your ongoing courses and grades:
+Press 2 to offer/register a course or deregister a course:
+Press 3  to see grades for different academic courses:
+Press 4  to see grades for a particular student:
+Press 5 to upload grades:
+Press 6 to logg out
+Enter User Id of the student:
+Offer ID  Course  Year  sem  grade  Credits_Earned   Status            
+2015      CP301-3   2023  2    NA      3                completed   
+2016      CP301-2   2023  1    NA      3                completed   
+2014      CP301-1   2022  2    NA      3                completed   
+2007      CS535   2022  1    A      0                completed   
+2001      CS202   2020  2    A      4                completed   
+2002      CS204   2020  2    A      4                completed   
+Press 1 to see  your ongoing courses and grades:
+Press 2 to offer/register a course or deregister a course:
+Press 3  to see grades for different academic courses:
+Press 4  to see grades for a particular student:
+Press 5 to upload grades:
+Press 6 to logg out
+Press 1 to see  your ongoing courses and grades:
+Press 2 to offer/register a course or deregister a course:
+Press 3  to see grades for different academic courses:
+Press 4  to see grades for a particular student:
+Press 5 to upload grades:
+Press 6 to logg out
+Press 1 to see  your ongoing courses and grades:
+Press 2 to offer/register a course or deregister a course:
+Press 3  to see grades for different academic courses:
+Press 4  to see grades for a particular student:
+Press 5 to upload grades:
+Press 6 to logg out
+Offer Id  Course  year  semester  CGPA Required  
+2005       CP301-2   2023  1         0              
+2034       CS546   2023  1         0  
+Enter Offer Id of the course to enter grades: 
+Enter Path of your .csv file: 
+Student 2020CSB1060 does not exist.
+Student 2020CSB1061 does not exist.
+Student 2020CSB1107 does not exist.
+Student 2020CSB1132 does not exist.
+Student 2020CSB1123 does not exist.
+Press 1 to see  your ongoing courses and grades:
+Press 2 to offer/register a course or deregister a course:
+Press 3  to see grades for different academic courses:
+Press 4  to see grades for a particular student:
+Press 5 to upload grades:
+Press 6 to logg out
+]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

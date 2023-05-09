@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="org.example.disp_stu_courseTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2023-03-07T04:31:52" hostname="DESKTOP-HV7JIS6" time="0.066">
+  <properties/>
+  <testcase name="dis_course()" classname="org.example.disp_stu_courseTest" time="0.066"/>
+  <system-out><![CDATA[Offer ID  Course  Year  sem  grade  Credits_Earned   Status            
+2015      CP301-3   2023  2    NA      3                completed   
+2016      CP301-2   2023  1    NA      3                completed   
+2014      CP301-1   2022  2    NA      3                completed   
+2007      CS535   2022  1    A      0                completed   
+2001      CS202   2020  2    A      4                completed   
+2002      CS204   2020  2    A      4                completed   
+]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

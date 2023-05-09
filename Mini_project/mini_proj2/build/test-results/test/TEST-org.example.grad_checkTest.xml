@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="org.example.grad_checkTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2023-03-07T04:31:53" hostname="DESKTOP-HV7JIS6" time="0.632">
+  <properties/>
+  <testcase name="grad_check()" classname="org.example.grad_checkTest" time="0.632"/>
+  <system-out><![CDATA[select sum(credits) from student_transcript where (course_id='CP301-1' or course_id='CP301-2' or course_id='CP301-3') and status='completed'and stu_id='2020CSB1060';
+select sum(credits) from student_transcript where stu_id='2020CSB1060' and type='PC' and course_id!='CP301-1' and course_id!='CP301-2'and course_id!='CP301-3' and status='completed' 
+select sum(credits) from student_transcript where stu_id='2020CSB1060' and type='PE' and (status='completed')
+select sum(credits) from student_transcript where stu_id='2020CSB1060' and type='E' and (status='completed')
+q1
+8
+8
+0
+0
+Your total credits are less than 120 so can't graduate!!!
+]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

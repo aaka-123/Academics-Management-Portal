@@ -1,0 +1,255 @@
+
+
+
+<!DOCTYPE html>
+<html id="htmlId">
+<head>
+  <title>Coverage Report > generate_trans</title>
+  <style type="text/css">
+    @import "../../css/coverage.css";
+    @import "../../css/idea.min.css";
+  </style>
+  <script type="text/javascript" src="../../js/highlight.min.js"></script>
+  <script type="text/javascript" src="../../js/highlightjs-line-numbers.min.js"></script>
+</head>
+
+<body>
+<div class="content">
+<div class="breadCrumbs">
+Current scope:     <a href="../../index.html">all classes</a>
+    <span class="separator">|</span>
+    <a href="../index.html">org.example</a>
+</div>
+
+<h1>Coverage Summary for Class: generate_trans (org.example)</h1>
+
+<table class="coverageStats">
+<tr>
+  <th class="name">Class</th>
+<th class="coverageStat 
+">
+  Class, %
+</th>
+<th class="coverageStat 
+">
+  Method, %
+</th>
+<th class="coverageStat 
+">
+  Line, %
+</th>
+</tr>
+<tr>
+  <td class="name">generate_trans</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (1/1)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (2/2)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (92/92)
+  </span>
+</td>
+</tr>
+
+</table>
+
+<br/>
+<br/>
+
+
+<pre>
+<code class="sourceCode" id="sourceCode">&nbsp;package org.example;
+&nbsp;
+&nbsp;import java.io.FileWriter;
+&nbsp;import java.io.IOException;
+&nbsp;import java.io.PrintWriter;
+&nbsp;import java.sql.Connection;
+&nbsp;import java.sql.DriverManager;
+&nbsp;import java.sql.ResultSet;
+&nbsp;import java.sql.Statement;
+&nbsp;
+<b class="fc">&nbsp;public class generate_trans {</b>
+&nbsp;    static final String JDBC_DRIVER = &quot;org.postgresql.Driver&quot;;
+&nbsp;    static final String DB_URL = &quot;jdbc:postgresql://localhost:5432/aims&quot;;
+&nbsp;
+&nbsp;    static final String USER = &quot;postgres&quot;;
+&nbsp;    static final String PASS = &quot;postgres&quot;;
+&nbsp;
+&nbsp;    public boolean generate_transcript(String id) throws IOException
+&nbsp;    {
+<b class="fc">&nbsp;        boolean x=true;</b>
+&nbsp;
+<b class="fc">&nbsp;        Connection c = null;</b>
+<b class="fc">&nbsp;        Statement stmt = null;</b>
+<b class="fc">&nbsp;        FileWriter fw=new FileWriter(&quot;C:\\Users\\Aakash\\IdeaProjects\\mini_proj\\src\\main\\java\\org\\example\\transcript.txt&quot;);</b>
+<b class="fc">&nbsp;        PrintWriter bw=new PrintWriter(fw);</b>
+&nbsp;        try {
+<b class="fc">&nbsp;            c = DriverManager.getConnection(DB_URL, USER, PASS);</b>
+<b class="fc">&nbsp;            stmt = c.createStatement();</b>
+<b class="fc">&nbsp;            float cg=0,sg=0,cred_reg=0,cred_earned=0;</b>
+<b class="fc">&nbsp;            String adm=id.substring(0,4);</b>
+<b class="fc">&nbsp;            int adm_yr=Integer.parseInt(adm);</b>
+&nbsp;            //   System.out.println(adm_yr);
+&nbsp;            //   System.exit(0);
+<b class="fc">&nbsp;            int sem=2;</b>
+<b class="fc">&nbsp;            String name=new String();</b>
+<b class="fc">&nbsp;            String entry_no=new String();</b>
+<b class="fc">&nbsp;            String q12=&quot;select name,entry_no from student where entry_no=&quot;+&quot;\&#39;&quot;+id+&quot;\&#39;&quot;;</b>
+&nbsp;            //  System.out.println(q12);
+<b class="fc">&nbsp;            ResultSet rs = stmt.executeQuery(q12);</b>
+<b class="fc">&nbsp;            if(!rs.next()) {x=false;</b>
+<b class="fc">&nbsp;                System.out.println(&quot;No student with this id&quot;) ;</b>
+&nbsp;            }
+&nbsp;
+&nbsp;            else{
+<b class="fc">&nbsp;                name=rs.getString(1);</b>
+&nbsp;
+&nbsp;
+&nbsp;
+<b class="fc">&nbsp;                entry_no=rs.getString(2);</b>
+&nbsp;            }
+&nbsp;
+&nbsp;
+&nbsp;            //  System.out.println(&quot;erre&quot;);
+&nbsp;
+<b class="fc">&nbsp;            String q10=&quot;select sem from semester where status=&quot;+&quot;\&#39;&quot;+&quot;t&quot;+&quot;\&#39;&quot;;</b>
+<b class="fc">&nbsp;            String q11=&quot;select year from semester where status=&quot;+&quot;\&#39;&quot;+&quot;t&quot;+&quot;\&#39;&quot;;</b>
+&nbsp;            //  System.out.println(q11);
+<b class="fc">&nbsp;            rs= stmt.executeQuery(q11);</b>
+<b class="fc">&nbsp;            rs.next();</b>
+<b class="fc">&nbsp;            int curr_yr=rs.getInt(1);</b>
+&nbsp;
+<b class="fc">&nbsp;            rs= stmt.executeQuery(q10);</b>
+<b class="fc">&nbsp;            rs.next();</b>
+&nbsp;            //  System.out.println(q10);
+<b class="fc">&nbsp;            int curr_sem=rs.getInt(1);</b>
+&nbsp;
+&nbsp;
+<b class="fc">&nbsp;            bw.print(&quot;Name: &quot;+name);</b>
+<b class="fc">&nbsp;            bw.println(&quot;     Entry Number: &quot;+entry_no+&quot;   &quot;);</b>
+<b class="fc">&nbsp;            int dif=curr_yr-adm_yr;</b>
+<b class="fc">&nbsp;            for(int j=0;j&lt;=dif;j++)</b>
+&nbsp;            {
+<b class="fc">&nbsp;                if(adm_yr&gt;curr_yr) continue;</b>
+<b class="fc">&nbsp;                for(int m=1;m&lt;=2;m++)</b>
+&nbsp;                {
+<b class="fc">&nbsp;                    sem=m;</b>
+<b class="fc">&nbsp;                    if(adm_yr==curr_yr &amp;&amp; m==curr_sem) continue;</b>
+<b class="fc">&nbsp;                    String query = &quot;select t.course_id,ct.name,t.grade from student_transcript t,course_cat ct where t.year=&quot;+adm_yr+&quot; and t.sem=&quot;+sem+&quot; and t.stu_id=&#39;&quot;+id+&quot;\&#39;&quot;+&quot; and t.course_id=ct.course_id&quot;;</b>
+&nbsp;                    // System.out.println(query);
+<b class="fc">&nbsp;                    String q2=&quot;select calc_sgpa(&#39;&quot;+id+&quot;\&#39;&quot;+&quot;,&quot;+adm_yr+&quot;,&quot;+sem+&quot;)&quot;;</b>
+<b class="fc">&nbsp;                    String q3=&quot;select calc_gpa(&#39;&quot;+id+&quot;\&#39;&quot;+&quot;)&quot;;</b>
+<b class="fc">&nbsp;                    String q4=&quot;select sum(t.credits) from student_transcript t where t.year=&quot;+curr_yr+&quot; and t.sem=&quot;+sem+&quot; and t.stu_id=&#39;&quot;+id+&quot;\&#39;&quot;;</b>
+<b class="fc">&nbsp;                    String q5=&quot;select sum(ct.c) from student_transcript t,course_cat ct where t.year=&quot;+curr_yr+&quot; and t.sem=&quot;+sem+&quot; and t.stu_id=&#39;&quot;+id+&quot;\&#39;&quot;+&quot;and t.course_id=ct.course_id&quot;;</b>
+<b class="fc">&nbsp;                    rs = stmt.executeQuery(q2);</b>
+<b class="fc">&nbsp;                    rs.next();</b>
+<b class="fc">&nbsp;                    sg=rs.getFloat(1);</b>
+&nbsp;
+<b class="fc">&nbsp;                    rs =  stmt.executeQuery(q3);</b>
+<b class="fc">&nbsp;                    rs.next();</b>
+<b class="fc">&nbsp;                    cg=rs.getFloat(1);</b>
+&nbsp;
+<b class="fc">&nbsp;                    rs =  stmt.executeQuery(q4);</b>
+<b class="fc">&nbsp;                    rs.next();</b>
+<b class="fc">&nbsp;                    cred_earned=rs.getFloat(1);</b>
+&nbsp;
+<b class="fc">&nbsp;                    rs = stmt.executeQuery(q5);</b>
+<b class="fc">&nbsp;                    rs.next();</b>
+<b class="fc">&nbsp;                    cred_reg=rs.getFloat(1);</b>
+<b class="fc">&nbsp;                    rs=  stmt.executeQuery(query);</b>
+&nbsp;
+<b class="fc">&nbsp;                    if(!rs.next() )</b>
+&nbsp;                    {
+<b class="fc">&nbsp;                        System.out.println(&quot;No courses done by student in  year &quot;+adm_yr+&quot;and &quot;+&quot;semester &quot;+sem);</b>
+&nbsp;                    }
+&nbsp;                    else {
+&nbsp;
+<b class="fc">&nbsp;                        bw.print(&quot;Session: &quot;+adm_yr+&quot;-&quot;+sem);</b>
+<b class="fc">&nbsp;                        bw.print(&quot;     SGPA: &quot;+sg);</b>
+<b class="fc">&nbsp;                        bw.print(&quot;     Credits Registered: &quot;+cred_reg);</b>
+<b class="fc">&nbsp;                        bw.print(&quot;     Credits Earned: &quot;+cred_earned);</b>
+<b class="fc">&nbsp;                        bw.print(&quot;      CGPA: &quot;+cg);</b>
+<b class="fc">&nbsp;                        bw.print(&quot;\n&quot;);</b>
+<b class="fc">&nbsp;                        bw.print(&quot;Course Id&quot;+&quot;  &quot;);</b>
+<b class="fc">&nbsp;                        bw.print(&quot;Course Name&quot;+&quot;                             &quot;);</b>
+<b class="fc">&nbsp;                        bw.print(&quot;Grade&quot;+&quot;  &quot;);</b>
+<b class="fc">&nbsp;                        bw.print(&quot;\n&quot;);</b>
+<b class="fc">&nbsp;                        bw.print(rs.getString(1)+&quot;      &quot;);</b>
+<b class="fc">&nbsp;                        String p=rs.getString(2);</b>
+<b class="fc">&nbsp;                        String s=&quot;&quot;;</b>
+<b class="fc">&nbsp;                        bw.print(p);</b>
+<b class="fc">&nbsp;                        for(int o=0;o&lt;40-p.length();o++)</b>
+&nbsp;                        {
+<b class="fc">&nbsp;                            bw.print(&quot; &quot;);</b>
+&nbsp;                        }
+<b class="fc">&nbsp;                        bw.print(rs.getString(3)+&quot;     &quot;);</b>
+<b class="fc">&nbsp;                        bw.println(&quot;\n&quot;);</b>
+<b class="fc">&nbsp;                        while(rs.next())</b>
+<b class="fc">&nbsp;                        {  bw.print(rs.getString(1)+&quot;      &quot;);</b>
+<b class="fc">&nbsp;                            p=rs.getString(2);</b>
+<b class="fc">&nbsp;                            s=&quot;&quot;;</b>
+<b class="fc">&nbsp;                            bw.print(p);</b>
+<b class="fc">&nbsp;                            for(int n=0;n&lt;40-p.length();n++)</b>
+&nbsp;                            {
+<b class="fc">&nbsp;                                bw.print(&quot; &quot;);</b>
+&nbsp;                            }
+<b class="fc">&nbsp;                            bw.print(rs.getString(3)+&quot;     &quot;);</b>
+<b class="fc">&nbsp;                            bw.print(&quot;\n&quot;);</b>
+&nbsp;                        }}}
+<b class="fc">&nbsp;                if(sem==2) adm_yr++;</b>
+<b class="fc">&nbsp;                bw.print(&quot; \n &quot;);</b>
+<b class="fc">&nbsp;                bw.print(&quot;  \n    &quot;);</b>
+&nbsp;            }
+<b class="fc">&nbsp;            stmt.close();</b>
+<b class="fc">&nbsp;            c.close();</b>
+<b class="fc">&nbsp;            rs.close();</b>
+&nbsp;        }
+<b class="fc">&nbsp;        catch (Exception e) {x=false;System.err.println(e.getClass().getName() + &quot;: &quot; + e.getMessage());System.exit(0);}</b>
+<b class="fc">&nbsp;        bw.close();</b>
+<b class="fc">&nbsp;        return x;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;}
+</code>
+</pre>
+</div>
+
+<script type="text/javascript">
+(function() {
+    var msie = false, msie9 = false;
+    /*@cc_on
+      msie = true;
+      @if (@_jscript_version >= 9)
+        msie9 = true;
+      @end
+    @*/
+
+    if (!msie || msie && msie9) {
+      hljs.highlightAll()
+      hljs.initLineNumbersOnLoad();
+    }
+})();
+</script>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2023-03-06 20:17</div>
+</div>
+</body>
+</html>

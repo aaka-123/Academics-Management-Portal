@@ -1,0 +1,29 @@
+Name: Aakash     Entry Number: 2020CSB1060   
+Session: 2020-2     SGPA: 10.0     Credits Registered: 6.0     Credits Earned: 3.0      CGPA: 4.71
+Course Id  Course Name                             Grade  
+CS202      PROGRAMMING PARADIGMS AND PRAGMATICS    A     
+
+CS204      COMPUTER ARCHITECTURE                   A     
+ 
+   
+     
+   
+    Session: 2022-1     SGPA: 0.0     Credits Registered: 7.0     Credits Earned: 3.0      CGPA: 4.71
+Course Id  Course Name                             Grade  
+CS517      Digital images                          NA     
+
+CS535      Computer vision                         NA     
+Session: 2022-2     SGPA: 0.0     Credits Registered: 6.0     Credits Earned: 3.0      CGPA: 4.71
+Course Id  Course Name                             Grade  
+CP301-1      Capstone                                NA     
+
+ 
+   
+    Session: 2023-1     SGPA: 0.0     Credits Registered: 7.0     Credits Earned: 3.0      CGPA: 4.71
+Course Id  Course Name                             Grade  
+CS301      DATABASES                               NA     
+
+CP301-2      Capstone                                NA     
+ 
+   
+    

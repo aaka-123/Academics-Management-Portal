@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="org.example.disp_instr_coursesTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2023-03-07T04:31:52" hostname="DESKTOP-HV7JIS6" time="0.067">
+  <properties/>
+  <testcase name="disp()" classname="org.example.disp_instr_coursesTest" time="0.067"/>
+  <system-out><![CDATA[Offer Id  Course  year  semester  CGPA Required  
+2005       CP301-2   2023  1         0              
+2034       CS546   2023  1         0  
+]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

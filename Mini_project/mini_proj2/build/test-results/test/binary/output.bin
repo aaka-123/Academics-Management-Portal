@@ -1,0 +1,530 @@
+0.0
+ Function executed successfully
+16.0
+"Press 1 to login and 2 to exit!!
+/                   Welcome to aims portal!!!!
+Enter User Name: 
+Enter Password: 
+Wrong Password
+"Press 1 to login and 2 to exit!!
+&Grades entered for user  2020CSB1060
+&Grades entered for user  2020CSB1061
+%Student 2020CSB1107 does not exist.
+%Student 2020CSB1132 does not exist.
+%Student 2020CSB1123 does not exist.
+
+	1Press 1 to see  set current year and semester: 
+
+	%Press 2 to Update course catalogue:
+
+	7Press 3 to see grades for different academic courses:
+
+	2Press 4  to see grades for a particular student:
+
+	"Press 5 to generate transcript: 
+
+	 Press 6 for graduation check: 
+
+	Press 7 to logg out
+
+	:select name,course_id,l,t,p,c,dept,type from course_cat 
+
+	\Name                                             Course Id  L  T  P  C  Department  Type  
+
+	\Industrial Management                             HS301     3  1  0  3  CSE         PE    
+
+	\PROGRAMMING PARADIGMS AND PRAGMATICS              CS202     3  1  2  4  CSE         PC    
+
+	\COMPUTER ARCHITECTURE                             CS204     3  1  2  4  CSE         PC    
+
+	\DATABASES                                         CS301     3  1  2  4  CSE         PC    
+
+	\ANALYSIS AND DESIGN OF ALGORITHMS                 CS302     3  1  0  3  CSE         PC    
+
+	\Digital images                                    CS517     3  1  2  3  CSE         PE    
+
+	\Computer vision                                   CS535     3  1  2  3  CSE         PE    
+
+	\Machine learning                                  CS546     3  1  2  3  CSE         PE    
+
+	[Fantasy                                           HS491     3  1  2  3  CSE         E    
+
+	[professional ethics                               HS507     3  1  2  3  CSE         E    
+
+	[Capstone                                          CP301-3     0  0  0  3           PC    
+
+	[Capstone                                          CP301-2     0  0  0  3           PC    
+
+	[Capstone                                          CP301-1     0  0  0  3           PC    
+
+	Press 1 to add a course: 
+
+	Press 2 to delete a course: 
+
+	 Enter name of the new course: 
+
+	Enter the course ID: 
+
+	Enter L: 
+
+	Enter T: 
+
+	Enter P: 
+
+	Enter C: 
+
+	Enter dept: 
+
+	Enter type: 
+
+	Cinsert into course_cat values('maths','MA202',2,1,3,3,'CSE','PE')
+
+	3Course MA202 has been added to course catalogue!!
+
+	1Press 1 to see  set current year and semester: 
+
+	%Press 2 to Update course catalogue:
+
+	7Press 3 to see grades for different academic courses:
+
+	2Press 4  to see grades for a particular student:
+
+	"Press 5 to generate transcript: 
+
+	 Press 6 for graduation check: 
+
+	Press 7 to logg out
+
+1Press 1 to see  set current year and semester: 
+
+%Press 2 to Update course catalogue:
+
+7Press 3 to see grades for different academic courses:
+
+2Press 4  to see grades for a particular student:
+
+"Press 5 to generate transcript: 
+
+ Press 6 for graduation check: 
+
+Press 7 to logg out
+
+FOffer Id  Course  year  semester  Instr_id     CGPA Required  type  
+
+I2011       CP301-3   2023  2         2016CSI1112  0              PC    
+
+I2005       CP301-2   2023  1         2008CSI1060  0              PC    
+
+G2034       CS546   2023  1         2008CSI1060  0              PE    
+
+F2009       HS507   2023  2         2016CSI1112  0              E    
+
+G2017       CS546   2023  2         2016CSI1112  0              PE    
+
+I2010       CP301-1   2022  2         2016CSI1112  5              PC    
+
+DEnter Offer Id of the course for which you want to see the grades.
+
+7Course  Student ID  Year  sem  Grade  Status         
+
+1CS302   2020CSB1061 2023  2    NA    running   
+
+1CS302   2020CSB1062 2023  2    NA    running   
+
+1Press 1 to see  set current year and semester: 
+
+%Press 2 to Update course catalogue:
+
+7Press 3 to see grades for different academic courses:
+
+2Press 4  to see grades for a particular student:
+
+"Press 5 to generate transcript: 
+
+ Press 6 for graduation check: 
+
+Press 7 to logg out
+
+1Press 1 to see  set current year and semester: 
+
+%Press 2 to Update course catalogue:
+
+7Press 3 to see grades for different academic courses:
+
+2Press 4  to see grades for a particular student:
+
+"Press 5 to generate transcript: 
+
+ Press 6 for graduation check: 
+
+Press 7 to logg out
+
+Enter User Id of the student:
+
+IOffer ID  Course  Year  sem  grade  Credits_Earned   Status            
+
+F2015      CP301-3   2023  2    NA      3                completed   
+
+F2016      CP301-2   2023  1    NA      3                completed   
+
+F2014      CP301-1   2022  2    NA      3                completed   
+
+C2007      CS535   2022  1    A      0                completed   
+
+C2001      CS202   2020  2    A      4                completed   
+
+C2002      CS204   2020  2    A      4                completed   
+
+1Press 1 to see  set current year and semester: 
+
+%Press 2 to Update course catalogue:
+
+7Press 3 to see grades for different academic courses:
+
+2Press 4  to see grades for a particular student:
+
+"Press 5 to generate transcript: 
+
+ Press 6 for graduation check: 
+
+Press 7 to logg out
+
+1Press 1 to see  set current year and semester: 
+
+%Press 2 to Update course catalogue:
+
+7Press 3 to see grades for different academic courses:
+
+2Press 4  to see grades for a particular student:
+
+"Press 5 to generate transcript: 
+
+ Press 6 for graduation check: 
+
+Press 7 to logg out
+
+=Enter student Id for which you want to generate transcript:
+
+8No courses done by student in  year 2020and semester 1
+
+8No courses done by student in  year 2021and semester 1
+
+8No courses done by student in  year 2021and semester 2
+
+1Press 1 to see  set current year and semester: 
+
+%Press 2 to Update course catalogue:
+
+7Press 3 to see grades for different academic courses:
+
+2Press 4  to see grades for a particular student:
+
+"Press 5 to generate transcript: 
+
+ Press 6 for graduation check: 
+
+Press 7 to logg out
+
+1Press 1 to see  set current year and semester: 
+
+%Press 2 to Update course catalogue:
+
+7Press 3 to see grades for different academic courses:
+
+2Press 4  to see grades for a particular student:
+
+"Press 5 to generate transcript: 
+
+ Press 6 for graduation check: 
+
+Press 7 to logg out
+
+=Enter student Id for which you want to generate transcript:
+
+8No courses done by student in  year 2020and semester 1
+
+8No courses done by student in  year 2021and semester 1
+
+8No courses done by student in  year 2021and semester 2
+
+1Press 1 to see  set current year and semester: 
+
+%Press 2 to Update course catalogue:
+
+7Press 3 to see grades for different academic courses:
+
+2Press 4  to see grades for a particular student:
+
+"Press 5 to generate transcript: 
+
+ Press 6 for graduation check: 
+
+Press 7 to logg out
+
+1Press 1 to see  set current year and semester: 
+
+%Press 2 to Update course catalogue:
+
+7Press 3 to see grades for different academic courses:
+
+2Press 4  to see grades for a particular student:
+
+"Press 5 to generate transcript: 
+
+ Press 6 for graduation check: 
+
+Press 7 to logg out
+7Course  Student ID  Year  sem  Grade  Status         
+2CS535   2020CSB1061 2022  1    B    completed   
+2CS535   2020CSB1060 2022  1    A    completed   
+FOffer Id  Course  year  semester  Instr_id     CGPA Required  type  
+I2011       CP301-3   2023  2         2016CSI1112  0              PC    
+I2005       CP301-2   2023  1         2008CSI1060  0              PC    
+G2034       CS546   2023  1         2008CSI1060  0              PE    
+F2009       HS507   2023  2         2016CSI1112  0              E    
+G2017       CS546   2023  2         2016CSI1112  0              PE    
+I2010       CP301-1   2022  2         2016CSI1112  5              PC    
+:select name,course_id,l,t,p,c,dept,type from course_cat 
+\Name                                             Course Id  L  T  P  C  Department  Type  
+\Industrial Management                             HS301     3  1  0  3  CSE         PE    
+\maths                                             MA202     2  1  3  3  CSE         PE    
+\PROGRAMMING PARADIGMS AND PRAGMATICS              CS202     3  1  2  4  CSE         PC    
+\COMPUTER ARCHITECTURE                             CS204     3  1  2  4  CSE         PC    
+\DATABASES                                         CS301     3  1  2  4  CSE         PC    
+\ANALYSIS AND DESIGN OF ALGORITHMS                 CS302     3  1  0  3  CSE         PC    
+\Digital images                                    CS517     3  1  2  3  CSE         PE    
+\Computer vision                                   CS535     3  1  2  3  CSE         PE    
+\Machine learning                                  CS546     3  1  2  3  CSE         PE    
+[Fantasy                                           HS491     3  1  2  3  CSE         E    
+[professional ethics                               HS507     3  1  2  3  CSE         E    
+[Capstone                                          CP301-3     0  0  0  3           PC    
+[Capstone                                          CP301-2     0  0  0  3           PC    
+[Capstone                                          CP301-1     0  0  0  3           PC    
+7Course  Student ID  Year  sem  Grade  Status         
+2CS535   2020CSB1061 2022  1    B    completed   
+2CS535   2020CSB1060 2022  1    A    completed   
+No Students registered !!!
+3Offer Id  Course  year  semester  CGPA Required  
+62005       CP301-2   2023  1         0              
+(2034       CS546   2023  1         0  
+IOffer ID  Course  Year  sem  grade  Credits_Earned   Status            
+F2015      CP301-3   2023  2    NA      3                completed   
+F2016      CP301-2   2023  1    NA      3                completed   
+F2014      CP301-1   2022  2    NA      3                completed   
+C2007      CS535   2022  1    A      0                completed   
+C2001      CS202   2020  2    A      4                completed   
+C2002      CS204   2020  2    A      4                completed   
+VCourse select course_id from course_offer where offr_id=2007 has been deregistered!!
+2Course HS301 has been deleted from catalogue!!!!
+ Sinsert into course_cat values('Industrial Management','HS301',3,1,0,3,'CSE','PE')
+ 3Course HS301 has been added to course catalogue!!
+"!7Course  Student ID  Year  sem  Grade  Status         
+"!2CS204   2020CSB1060 2020  2    A    completed   
+$#2Press 1 to see  your ongoing courses and grades:
+$#<Press 2 to offer/register a course or deregister a course:
+$#8Press 3  to see grades for different academic courses:
+$#2Press 4  to see grades for a particular student:
+$#Press 5 to upload grades:
+$#Press 6 to logg out
+$#No courses !!!
+$#-Enter Offer Id of the course to see grade: 
+$#No Students registered !!!
+$#2Press 1 to see  your ongoing courses and grades:
+$#<Press 2 to offer/register a course or deregister a course:
+$#8Press 3  to see grades for different academic courses:
+$#2Press 4  to see grades for a particular student:
+$#Press 5 to upload grades:
+$#Press 6 to logg out
+$%2Press 1 to see  your ongoing courses and grades:
+$%<Press 2 to offer/register a course or deregister a course:
+$%8Press 3  to see grades for different academic courses:
+$%2Press 4  to see grades for a particular student:
+$%Press 5 to upload grades:
+$%Press 6 to logg out
+$%%Press 1 to register/offer a course:
+$%!Press 2 to deregister a course:
+$%:select name,course_id,l,t,p,c,dept,type from course_cat 
+$%\Name                                             Course Id  L  T  P  C  Department  Type  
+$%\maths                                             MA202     2  1  3  3  CSE         PE    
+$%\Industrial Management                             HS301     3  1  0  3  CSE         PE    
+$%\PROGRAMMING PARADIGMS AND PRAGMATICS              CS202     3  1  2  4  CSE         PC    
+$%\COMPUTER ARCHITECTURE                             CS204     3  1  2  4  CSE         PC    
+$%\DATABASES                                         CS301     3  1  2  4  CSE         PC    
+$%\ANALYSIS AND DESIGN OF ALGORITHMS                 CS302     3  1  0  3  CSE         PC    
+$%\Digital images                                    CS517     3  1  2  3  CSE         PE    
+$%\Computer vision                                   CS535     3  1  2  3  CSE         PE    
+$%\Machine learning                                  CS546     3  1  2  3  CSE         PE    
+$%[Fantasy                                           HS491     3  1  2  3  CSE         E    
+$%[professional ethics                               HS507     3  1  2  3  CSE         E    
+$%[Capstone                                          CP301-3     0  0  0  3           PC    
+$%[Capstone                                          CP301-2     0  0  0  3           PC    
+$%[Capstone                                          CP301-1     0  0  0  3           PC    
+$%)Enter course ID of the course to offer:
+$%.Enter the CGPA requirement for the course : 
+$%4The course is already being offered in this sem!!!
+$%2Press 1 to see  your ongoing courses and grades:
+$%<Press 2 to offer/register a course or deregister a course:
+$%8Press 3  to see grades for different academic courses:
+$%2Press 4  to see grades for a particular student:
+$%Press 5 to upload grades:
+$%Press 6 to logg out
+$&2Press 1 to see  your ongoing courses and grades:
+$&<Press 2 to offer/register a course or deregister a course:
+$&8Press 3  to see grades for different academic courses:
+$&2Press 4  to see grades for a particular student:
+$&Press 5 to upload grades:
+$&Press 6 to logg out
+$&%Press 1 to register/offer a course:
+$&!Press 2 to deregister a course:
+$&3Offer Id  Course  year  semester  CGPA Required  
+$&62005       CP301-2   2023  1         0              
+$&(2034       CS546   2023  1         0  
+$&*Enter Offer Id of the course to delete: 
+$&VCourse select course_id from course_offer where offr_id=2004 has been deregistered!!
+$&2Press 1 to see  your ongoing courses and grades:
+$&<Press 2 to offer/register a course or deregister a course:
+$&8Press 3  to see grades for different academic courses:
+$&2Press 4  to see grades for a particular student:
+$&Press 5 to upload grades:
+$&Press 6 to logg out
+$'2Press 1 to see  your ongoing courses and grades:
+$'<Press 2 to offer/register a course or deregister a course:
+$'8Press 3  to see grades for different academic courses:
+$'2Press 4  to see grades for a particular student:
+$'Press 5 to upload grades:
+$'Press 6 to logg out
+$'FOffer Id  Course  year  semester  Instr_id     CGPA Required  type  
+$'I2011       CP301-3   2023  2         2016CSI1112  0              PC    
+$'I2005       CP301-2   2023  1         2008CSI1060  0              PC    
+$'G2034       CS546   2023  1         2008CSI1060  0              PE    
+$'F2009       HS507   2023  2         2016CSI1112  0              E    
+$'G2017       CS546   2023  2         2016CSI1112  0              PE    
+$'I2010       CP301-1   2022  2         2016CSI1112  5              PC    
+$'DEnter Offer Id of the course for which you want to see the grades.
+$'No Students registered !!!
+$'2Press 1 to see  your ongoing courses and grades:
+$'<Press 2 to offer/register a course or deregister a course:
+$'8Press 3  to see grades for different academic courses:
+$'2Press 4  to see grades for a particular student:
+$'Press 5 to upload grades:
+$'Press 6 to logg out
+$(2Press 1 to see  your ongoing courses and grades:
+$(<Press 2 to offer/register a course or deregister a course:
+$(8Press 3  to see grades for different academic courses:
+$(2Press 4  to see grades for a particular student:
+$(Press 5 to upload grades:
+$(Press 6 to logg out
+$(Enter User Id of the student:
+$(IOffer ID  Course  Year  sem  grade  Credits_Earned   Status            
+$(F2015      CP301-3   2023  2    NA      3                completed   
+$(F2016      CP301-2   2023  1    NA      3                completed   
+$(F2014      CP301-1   2022  2    NA      3                completed   
+$(C2007      CS535   2022  1    A      0                completed   
+$(C2001      CS202   2020  2    A      4                completed   
+$(C2002      CS204   2020  2    A      4                completed   
+$(2Press 1 to see  your ongoing courses and grades:
+$(<Press 2 to offer/register a course or deregister a course:
+$(8Press 3  to see grades for different academic courses:
+$(2Press 4  to see grades for a particular student:
+$(Press 5 to upload grades:
+$(Press 6 to logg out
+$)2Press 1 to see  your ongoing courses and grades:
+$)<Press 2 to offer/register a course or deregister a course:
+$)8Press 3  to see grades for different academic courses:
+$)2Press 4  to see grades for a particular student:
+$)Press 5 to upload grades:
+$)Press 6 to logg out
+$*2Press 1 to see  your ongoing courses and grades:
+$*<Press 2 to offer/register a course or deregister a course:
+$*8Press 3  to see grades for different academic courses:
+$*2Press 4  to see grades for a particular student:
+$*Press 5 to upload grades:
+$*Press 6 to logg out
+$*3Offer Id  Course  year  semester  CGPA Required  
+$*62005       CP301-2   2023  1         0              
+$*(2034       CS546   2023  1         0  
+$*0Enter Offer Id of the course to enter grades: 
+$* Enter Path of your .csv file: 
+$*%Student 2020CSB1060 does not exist.
+$*%Student 2020CSB1061 does not exist.
+$*%Student 2020CSB1107 does not exist.
+$*%Student 2020CSB1132 does not exist.
+$*%Student 2020CSB1123 does not exist.
+$*2Press 1 to see  your ongoing courses and grades:
+$*<Press 2 to offer/register a course or deregister a course:
+$*8Press 3  to see grades for different academic courses:
+$*2Press 4  to see grades for a particular student:
+$*Press 5 to upload grades:
+$*Press 6 to logg out
+,+8No courses done by student in  year 2020and semester 1
+,+8No courses done by student in  year 2021and semester 1
+,+8No courses done by student in  year 2021and semester 2
+,+No student with this id
+,+8No courses done by student in  year 2020and semester 1
+,+8No courses done by student in  year 2020and semester 2
+,+8No courses done by student in  year 2021and semester 1
+,+8No courses done by student in  year 2021and semester 2
+,+8No courses done by student in  year 2022and semester 1
+,+8No courses done by student in  year 2022and semester 2
+,+8No courses done by student in  year 2023and semester 2
+.-§select sum(credits) from student_transcript where (course_id='CP301-1' or course_id='CP301-2' or course_id='CP301-3') and status='completed'and stu_id='2020CSB1060';
+.-¸select sum(credits) from student_transcript where stu_id='2020CSB1060' and type='PC' and course_id!='CP301-1' and course_id!='CP301-2'and course_id!='CP301-3' and status='completed' 
+.-oselect sum(credits) from student_transcript where stu_id='2020CSB1060' and type='PE' and (status='completed')
+.-nselect sum(credits) from student_transcript where stu_id='2020CSB1060' and type='E' and (status='completed')
+.-q1
+.-8
+.-8
+.-0
+.-0
+.-;Your total credits are less than 120 so can't graduate!!!
+0/=The course HS491 is now being offered by you in this sem!!!
+21]select status,course_id from student_transcript where stu_id='2020CSB1063' and offr_id=2007
+21Enter correct offer id!!!
+21]select status,course_id from student_transcript where stu_id='2020CSB1060' and offr_id=2001
+21!Course has already Completed!!!
+23&Yes you are eligible for this course
+234select c from course_cat where course_id='CP301-2'
+23cinsert into student_transcript values(2005,'2020CSB1063','CP301-2',2023,1,'NA',0,'running','PC');
+236Your Registration into course CP301-2 has been done.
+237This course is not offered in the current semester!!!
+76FOffer Id  Course  year  semester  Instr_id     CGPA Required  type  
+76I2034       CS546   2023  1         2008CSI1060  0.0              PE    
+76H2038       HS491   2023  1         2008CSI1060  0.0              E    
+76H2009       HS507   2023  2         2016CSI1112  0.0              E    
+76I2017       CS546   2023  2         2016CSI1112  0.0              PE    
+98*Press 1 to see  your courses and grades:
+98.Press 2 to register/deregister for a course:
+98$Press 3 to calculate current CGPA:
+98Press 4 to logg out
+987Press 1 to register and 2 to deregister for a course:
+98FOffer Id  Course  year  semester  Instr_id     CGPA Required  type  
+98I2034       CS546   2023  1         2008CSI1060  0.0              PE    
+98H2038       HS491   2023  1         2008CSI1060  0.0              E    
+98H2009       HS507   2023  2         2016CSI1112  0.0              E    
+98I2017       CS546   2023  2         2016CSI1112  0.0              PE    
+98&Enter a course offer ID to register:
+98Credit limit is exceeding!!!
+98
+98*Press 1 to see  your courses and grades:
+98.Press 2 to register/deregister for a course:
+98$Press 3 to calculate current CGPA:
+98Press 4 to logg out
+9:*Press 1 to see  your courses and grades:
+9:.Press 2 to register/deregister for a course:
+9:$Press 3 to calculate current CGPA:
+9:Press 4 to logg out
+9:7Press 1 to register and 2 to deregister for a course:
+9:IOffer ID  Course  Year  sem  grade  Credits_Earned   Status            
+9:B2004      CS302   2023  2    NA      0                running   
+9: Enter offer_ID to deregister!!
+9:]select status,course_id from student_transcript where stu_id='2020CSB1062' and offr_id=2017
+9:Enter correct offer id!!!
+9:
+9:*Press 1 to see  your courses and grades:
+9:.Press 2 to register/deregister for a course:
+9:$Press 3 to calculate current CGPA:
+9:Press 4 to logg out
+9;*Press 1 to see  your courses and grades:
+9;.Press 2 to register/deregister for a course:
+9;$Press 3 to calculate current CGPA:
+9;Press 4 to logg out

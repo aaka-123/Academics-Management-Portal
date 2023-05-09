@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="org.example.generate_transTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2023-03-07T04:31:53" hostname="DESKTOP-HV7JIS6" time="0.173">
+  <properties/>
+  <testcase name="generate_transcript()" classname="org.example.generate_transTest" time="0.173"/>
+  <system-out><![CDATA[No courses done by student in  year 2020and semester 1
+No courses done by student in  year 2021and semester 1
+No courses done by student in  year 2021and semester 2
+No student with this id
+No courses done by student in  year 2020and semester 1
+No courses done by student in  year 2020and semester 2
+No courses done by student in  year 2021and semester 1
+No courses done by student in  year 2021and semester 2
+No courses done by student in  year 2022and semester 1
+No courses done by student in  year 2022and semester 2
+No courses done by student in  year 2023and semester 2
+]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

@@ -1,0 +1,255 @@
+
+
+
+<!DOCTYPE html>
+<html id="htmlId">
+<head>
+  <title>Coverage Report > register</title>
+  <style type="text/css">
+    @import "../../css/coverage.css";
+    @import "../../css/idea.min.css";
+  </style>
+  <script type="text/javascript" src="../../js/highlight.min.js"></script>
+  <script type="text/javascript" src="../../js/highlightjs-line-numbers.min.js"></script>
+</head>
+
+<body>
+<div class="content">
+<div class="breadCrumbs">
+Current scope:     <a href="../../index.html">all classes</a>
+    <span class="separator">|</span>
+    <a href="../index.html">org.example</a>
+</div>
+
+<h1>Coverage Summary for Class: register (org.example)</h1>
+
+<table class="coverageStats">
+<tr>
+  <th class="name">Class</th>
+<th class="coverageStat 
+">
+  Class, %
+</th>
+<th class="coverageStat 
+">
+  Method, %
+</th>
+<th class="coverageStat 
+">
+  Line, %
+</th>
+</tr>
+<tr>
+  <td class="name">register</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (1/1)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (3/3)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    97.7%
+  </span>
+  <span class="absValue">
+    (85/87)
+  </span>
+</td>
+</tr>
+
+</table>
+
+<br/>
+<br/>
+
+
+<pre>
+<code class="sourceCode" id="sourceCode">&nbsp;package org.example;
+&nbsp;
+&nbsp;import java.sql.*;
+&nbsp;import java.util.Scanner;
+&nbsp;
+<b class="fc">&nbsp;public class register {</b>
+&nbsp;    static final String JDBC_DRIVER = &quot;org.postgresql.Driver&quot;;
+&nbsp;    static final String DB_URL = &quot;jdbc:postgresql://localhost:5432/aims&quot;;
+&nbsp;
+&nbsp;    static final String USER = &quot;postgres&quot;;
+&nbsp;    static final String PASS = &quot;postgres&quot;;
+&nbsp;
+&nbsp;
+&nbsp;    public boolean deregister(String s,int inp1) {
+&nbsp;
+<b class="fc">&nbsp;boolean x=true;</b>
+&nbsp;
+<b class="fc">&nbsp;        Connection c = null;</b>
+<b class="fc">&nbsp;        Statement stmt = null;</b>
+&nbsp;        try {
+<b class="fc">&nbsp;            c = DriverManager.getConnection(DB_URL, USER, PASS);</b>
+&nbsp;
+<b class="fc">&nbsp;            stmt = c.createStatement();</b>
+&nbsp;            String course;
+<b class="fc">&nbsp;            String query = &quot;select status,course_id from student_transcript where stu_id=&quot; +&quot;\&#39;&quot;+s+&quot;\&#39;&quot; +&quot; and offr_id=&quot;+inp1;</b>
+<b class="fc">&nbsp;             System.out.println(query);</b>
+<b class="fc">&nbsp;            ResultSet rs = stmt.executeQuery(query);</b>
+&nbsp;
+<b class="fc">&nbsp;            if (!rs.next()) { x=false;</b>
+<b class="fc">&nbsp;                System.out.println(&quot;Enter correct offer id!!!&quot;);</b>
+&nbsp;            } else {
+<b class="fc">&nbsp;                query = rs.getString(1);</b>
+<b class="fc">&nbsp;                course = rs.getString(2);</b>
+<b class="fc">&nbsp;                rs.close();</b>
+<b class="fc">&nbsp;                if (query.equals(&quot;completed&quot;)) {x=false;</b>
+<b class="fc">&nbsp;                    System.out.println(&quot;Course has already Completed!!!&quot;);</b>
+&nbsp;                } else {
+<b class="fc">&nbsp;                    query = &quot;delete from student_transcript where stu_id=&#39;&quot; + s + &quot;\&#39;&quot; + &quot;and offr_id=&quot; + inp1;</b>
+<b class="fc">&nbsp;                    stmt.executeUpdate(query);</b>
+<b class="fc">&nbsp;                    System.out.println(&quot;You have  dropped course &quot; + course + &quot;.&quot;);</b>
+&nbsp;                }
+<b class="fc">&nbsp;                stmt.close();</b>
+<b class="fc">&nbsp;                c.close();</b>
+&nbsp;            }
+&nbsp;        }
+<b class="fc">&nbsp;        catch(Exception e) {x=false;System.err.println(e.getClass().getName() + &quot;: &quot; + e.getMessage());System.exit(0);}</b>
+&nbsp;
+&nbsp;
+<b class="fc">&nbsp;return x;</b>
+&nbsp;
+&nbsp;}
+&nbsp;
+&nbsp;
+&nbsp;    public  boolean register(int offr_id,String id) {
+<b class="fc">&nbsp;        boolean x = true;</b>
+<b class="fc">&nbsp;        Connection c = null;</b>
+<b class="fc">&nbsp;        Statement stmt = null;</b>
+<b class="fc">&nbsp;        int adm_year = 0;</b>
+&nbsp;        try {
+<b class="fc">&nbsp;            c = DriverManager.getConnection(DB_URL, USER, PASS);</b>
+<b class="fc">&nbsp;            stmt = c.createStatement();</b>
+&nbsp;
+&nbsp;
+<b class="fc">&nbsp;            String query1 = &quot;CREATE OR REPLACE FUNCTION check_eligibility( id varchar,ofr_id int,adm_yr int) RETURNS text AS $$  DECLARE pre_req text[]; var text; cmt int;sem int; yr int; c_cred float; cred_lt float; curr_cred int; curr_sem int; curr_yr int; course text; cgpa float; cgpa_req float; count int;  satisfy int; r1 record;rec record; cr CURSOR FOR (select * from student_transcript where offr_id=ofr_id and stu_id=id);  c CURSOR (key text) FOR (select * from student_transcript s where s.stu_id=id and s.course_id=key);  BEGIN cmt=0; OPEN cr;Loop FETCH FROM cr INTO r1;if not found then exit ; else cmt=1;end if;end loop;close cr;if cmt=1 then return &#39;You are already registered in this course&#39;; end if; yr=(select year from course_offer c where c.offr_id=ofr_id);  sem=(select semester from course_offer c where c.offr_id=ofr_id);  curr_yr=(select year from semester where status=&#39;t&#39;); curr_sem=(select s.sem from semester s where status=&#39;t&#39;); cgpa_req=(select c.cgpa_req from course_offer c where c.offr_id=ofr_id); cgpa=calc_gpa(id); course =(select course_id from course_offer c where c.offr_id=ofr_id);  pre_req=(select p.pre_req from pre_req p,course_offer c where p.course_id=c.course_id and c.offr_id=ofr_id);  count=0; c_cred=(select distinct(ct.c) from course_cat ct,course_offer o where ct.course_id=o.course_id and ct.course_id=course);  if curr_sem=2 then cred_lt= (select sum(t.credits) from student_transcript t where((t.year=yr and t.sem=1) or (t.year=yr-1 and t.sem=2))  and t.stu_id=id );  else cred_lt= (select sum(t.credits) from student_transcript t where t.year=yr-1  );  end if; curr_cred= (select sum(ct.c) from course_cat ct,student_transcript t where (t.year=curr_yr and t.sem=curr_sem and t.stu_id=id and t.course_id=ct.course_id) );  curr_cred=curr_cred+c_cred;  if curr_yr=adm_yr then cred_lt=18; else cred_lt=cred_lt/2;cred_lt=1.25*cred_lt; end if; if curr_cred&gt; cred_lt then  return &#39;Credit limit is exceeding!!!&#39;;  end if; if  cgpa&lt;cgpa_req  then return &#39;CGPA criteria  not satisifed!!&#39;;  elseif yr!=curr_yr or curr_sem!=sem then return &#39;This course is not offered in the current semester!!!&#39;; end if; IF array_length(pre_req, 1) &gt; 0 THEN foreach var in array pre_req  loop satisfy=0; OPEN c(var); Loop FETCH FROM c INTO rec; if not found then exit ; else  if rec.grade!=&#39;F&#39; and rec.grade!=&#39;E&#39; and rec.grade!=&#39;NA&#39; then satisfy=1; end if; count=count+1; end if; end Loop; CLOSE c;  if count=0 or satisfy=0 then return &#39;You do not satisfy the pre requisites for this course!!&#39;;  end if; end loop;end if; return &#39;Yes you are eligible for this course&#39;; end; $$language plpgsql; &quot;;</b>
+&nbsp;
+<b class="fc">&nbsp;            String adm = id.substring(0, 4);</b>
+<b class="fc">&nbsp;            adm_year = Integer.parseInt(adm);</b>
+&nbsp;            // System.out.println(query1);
+<b class="fc">&nbsp;            stmt.executeUpdate(query1);</b>
+&nbsp;
+<b class="fc">&nbsp;            stmt.close();</b>
+<b class="fc">&nbsp;            c.close();</b>
+&nbsp;
+&nbsp;
+<b class="fc">&nbsp;        } catch (Exception e) {System.err.println(e.getClass().getName() + &quot;: &quot; + e.getMessage());System.exit(0);}</b>
+&nbsp;
+&nbsp;        try {
+<b class="fc">&nbsp;            c = DriverManager.getConnection(DB_URL, USER, PASS);</b>
+<b class="fc">&nbsp;            CallableStatement cst = c.prepareCall(&quot;{call check_eligibility(?,?,?,?)}&quot;);</b>
+&nbsp;
+<b class="fc">&nbsp;            cst.setString(1, id);</b>
+<b class="fc">&nbsp;            cst.setInt(2, offr_id);</b>
+<b class="fc">&nbsp;            cst.setInt(3, adm_year);</b>
+<b class="fc">&nbsp;            cst.registerOutParameter(4, Types.VARCHAR);</b>
+<b class="fc">&nbsp;            cst.execute();</b>
+&nbsp;
+<b class="fc">&nbsp;            String ans = cst.getString(4);</b>
+<b class="fc">&nbsp;          System.out.println(ans);</b>
+<b class="fc">&nbsp;            cst.close();</b>
+<b class="fc">&nbsp;            c.close();</b>
+&nbsp;
+<b class="fc">&nbsp;            if (ans.equals(&quot;Yes you are eligible for this course&quot;)) {</b>
+&nbsp;
+&nbsp;
+<b class="fc">&nbsp;                String c_id = &quot;select course_id from course_offer where offr_id=&quot; + offr_id;</b>
+<b class="fc">&nbsp;                String year = &quot;select year from course_offer where offr_id=&quot; + offr_id;</b>
+&nbsp;
+<b class="fc">&nbsp;                String sem = &quot;select semester from course_offer where offr_id=&quot; + offr_id;</b>
+&nbsp;
+&nbsp;                // offr_id |   stu_id    | course_id | year | sem | grade | credits
+<b class="fc">&nbsp;                String cs_id = new String();</b>
+<b class="fc">&nbsp;                int yr = 0;</b>
+<b class="fc">&nbsp;                int sm = 0;</b>
+<b class="fc">&nbsp;                int crd = 0;</b>
+&nbsp;
+<b class="fc">&nbsp;                c = DriverManager.getConnection(DB_URL, USER, PASS);</b>
+<b class="fc">&nbsp;                stmt = c.createStatement();</b>
+&nbsp;
+&nbsp;                // String query2 = &quot;select name from instructor where instr_id=&quot;+&quot;\,&quot;++&quot;\&#39;&quot;;
+&nbsp;                // System.out.println(c_id);
+<b class="fc">&nbsp;                ResultSet rs = stmt.executeQuery(c_id);</b>
+<b class="fc">&nbsp;                rs.next();</b>
+<b class="fc">&nbsp;                cs_id = rs.getString(1);</b>
+<b class="fc">&nbsp;                rs = stmt.executeQuery(year);</b>
+<b class="fc">&nbsp;                rs.next();</b>
+<b class="fc">&nbsp;                yr = rs.getInt(1);</b>
+<b class="fc">&nbsp;                rs = stmt.executeQuery(sem);</b>
+<b class="fc">&nbsp;                rs.next();</b>
+<b class="fc">&nbsp;                sm = rs.getInt(1);</b>
+&nbsp;
+<b class="fc">&nbsp;                String cred = &quot;select c from course_cat where course_id=&quot; + &quot;\&#39;&quot; + cs_id + &quot;\&#39;&quot;;</b>
+<b class="fc">&nbsp;                String type = &quot;select type from course_cat where course_id=&quot; + &quot;\&#39;&quot; + cs_id + &quot;\&#39;&quot;;</b>
+<b class="fc">&nbsp;                rs = stmt.executeQuery(type);</b>
+<b class="fc">&nbsp;                rs.next();</b>
+<b class="fc">&nbsp;                type = rs.getString(1);</b>
+&nbsp;                // String query2 = &quot;select name from instructor where instr_id=&quot;+&quot;\,&quot;++&quot;\&#39;&quot;;
+<b class="fc">&nbsp;                System.out.println(cred);</b>
+&nbsp;
+<b class="fc">&nbsp;                rs = stmt.executeQuery(cred);</b>
+<b class="fc">&nbsp;                rs.next();</b>
+<b class="fc">&nbsp;                crd = rs.getInt(1);</b>
+<b class="fc">&nbsp;                String query = &quot;insert into student_transcript values(&quot; + offr_id + &quot;,&quot; + &quot;\&#39;&quot; + id + &quot;\&#39;&quot; + &quot;,&quot; + &quot;\&#39;&quot; + cs_id + &quot;\&#39;&quot; + &quot;,&quot; + yr + &quot;,&quot; + sm + &quot;,&quot; + &quot;\&#39;&quot; + &quot;NA&quot; + &quot;\&#39;&quot; + &quot;,0,&#39;running&#39;,&quot; + &quot;\&#39;&quot; + type + &quot;\&#39;&quot; + &quot;);&quot;;</b>
+<b class="fc">&nbsp;                System.out.println(query);</b>
+<b class="fc">&nbsp;                stmt.executeUpdate(query);</b>
+&nbsp;                //  rs.next();
+<b class="fc">&nbsp;                System.out.println(&quot;Your Registration into course &quot; + cs_id + &quot; has been done.&quot;);</b>
+&nbsp;
+<b class="fc">&nbsp;                stmt.close();</b>
+<b class="fc">&nbsp;                c.close();</b>
+<b class="fc">&nbsp;                rs.close();</b>
+&nbsp;
+<b class="fc">&nbsp;            } else {</b>
+<b class="nc">&nbsp;                x = false;</b>
+&nbsp;            }
+&nbsp;
+<b class="nc">&nbsp;        } catch (Exception e) {x = false;System.err.println(e.getClass().getName() + &quot;: &quot; + e.getMessage());System.exit(0);</b>
+<b class="fc">&nbsp;        }</b>
+&nbsp;
+<b class="fc">&nbsp;        return x;</b>
+&nbsp;
+&nbsp;
+&nbsp;    }}
+</code>
+</pre>
+</div>
+
+<script type="text/javascript">
+(function() {
+    var msie = false, msie9 = false;
+    /*@cc_on
+      msie = true;
+      @if (@_jscript_version >= 9)
+        msie9 = true;
+      @end
+    @*/
+
+    if (!msie || msie && msie9) {
+      hljs.highlightAll()
+      hljs.initLineNumbersOnLoad();
+    }
+})();
+</script>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2023-03-06 21:50</div>
+</div>
+</body>
+</html>

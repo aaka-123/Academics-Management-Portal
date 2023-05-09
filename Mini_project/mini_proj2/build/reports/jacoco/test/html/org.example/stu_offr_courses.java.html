@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>stu_offr_courses.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">mini_proj2</a> &gt; <a href="index.source.html" class="el_package">org.example</a> &gt; <span class="el_source">stu_offr_courses.java</span></div><h1>stu_offr_courses.java</h1><pre class="source lang-java linenums">package org.example;
+
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.Statement;
+
+<span class="fc" id="L8">public class stu_offr_courses {</span>
+    static final String JDBC_DRIVER = &quot;org.postgresql.Driver&quot;;
+    static final String DB_URL = &quot;jdbc:postgresql://localhost:5432/aims&quot;;
+
+    static final String USER = &quot;postgres&quot;;
+    static final String PASS = &quot;postgres&quot;;
+<span class="fc" id="L14">    Connection c = null;</span>
+<span class="fc" id="L15">    Statement stmt = null;</span>
+    public  String disp(String user) {
+<span class="fc" id="L17">        Connection c = null;</span>
+<span class="fc" id="L18">        Statement stmt = null;</span>
+        try {
+<span class="fc" id="L20">            c = DriverManager.getConnection(DB_URL, USER, PASS);</span>
+<span class="fc" id="L21">            stmt = c.createStatement();</span>
+<span class="fc" id="L22">            String query=&quot;select dept from student where entry_no=&quot;+&quot;\'&quot;+user+&quot;\'&quot;;</span>
+            //    System.out.println(query);
+<span class="fc" id="L24">            ResultSet rs=stmt.executeQuery(query);</span>
+
+<span class="pc bpc" id="L26" title="1 of 2 branches missed.">            if(!rs.next()) {System.out.println(&quot;student does not exist&quot;); return &quot;student does not exist&quot;;}</span>
+            else{
+<span class="fc" id="L28">                String dept=rs.getString(1);</span>
+<span class="fc" id="L29">                String query1 = &quot;select offr_id,course_id,year,semester,instr_id,cgpa_req,type from course_offer where dept=&quot;+&quot;\'&quot;+dept+&quot;\'&quot;;</span>
+<span class="fc" id="L30">                rs = stmt.executeQuery(query1);</span>
+<span class="pc bpc" id="L31" title="1 of 2 branches missed.">                if(!rs.next() )</span>
+                {
+<span class="nc" id="L33">                    System.out.println(&quot;No courses !!!&quot;);</span>
+<span class="nc" id="L34">                    return &quot;No courses !!!&quot;;</span>
+                }
+                else {
+<span class="fc" id="L37">                    System.out.print(&quot;Offer Id&quot;+&quot;  &quot;);</span>
+<span class="fc" id="L38">                    System.out.print(&quot;Course&quot;+&quot;  &quot;);</span>
+<span class="fc" id="L39">                    System.out.print(&quot;year&quot;+&quot;  &quot;);</span>
+<span class="fc" id="L40">                    System.out.print(&quot;semester&quot;+&quot;  &quot;);</span>
+<span class="fc" id="L41">                    System.out.print(&quot;Instr_id&quot;+&quot;     &quot;);</span>
+<span class="fc" id="L42">                    System.out.print(&quot;CGPA Required&quot;+&quot;  &quot;);</span>
+<span class="fc" id="L43">                    System.out.print(&quot;type&quot;+&quot;  &quot;);</span>
+<span class="fc" id="L44">                    System.out.println();</span>
+<span class="fc" id="L45">                    System.out.print(rs.getString(1)+&quot;       &quot;);</span>
+<span class="fc" id="L46">                    System.out.print(rs.getString(2)+&quot;   &quot;);</span>
+<span class="fc" id="L47">                    System.out.print(rs.getInt(3)+&quot;  &quot;);</span>
+<span class="fc" id="L48">                    System.out.print(rs.getInt(4)+&quot;         &quot;);</span>
+<span class="fc" id="L49">                    System.out.print(rs.getString(5)+&quot;  &quot;);</span>
+<span class="fc" id="L50">                    System.out.print(rs.getFloat(6)+&quot;              &quot;);</span>
+<span class="fc" id="L51">                    System.out.print(rs.getString(7)+&quot;    &quot;);</span>
+<span class="fc" id="L52">                    System.out.println();</span>
+<span class="fc bfc" id="L53" title="All 2 branches covered.">                    while(rs.next())</span>
+                    {
+<span class="fc" id="L55">                        System.out.print(rs.getString(1)+&quot;       &quot;);</span>
+<span class="fc" id="L56">                        System.out.print(rs.getString(2)+&quot;   &quot;);</span>
+<span class="fc" id="L57">                        System.out.print(rs.getInt(3)+&quot;  &quot;);</span>
+<span class="fc" id="L58">                        System.out.print(rs.getInt(4)+&quot;         &quot;);</span>
+<span class="fc" id="L59">                        System.out.print(rs.getString(5)+&quot;  &quot;);</span>
+<span class="fc" id="L60">                        System.out.print(rs.getFloat(6)+&quot;              &quot;);</span>
+<span class="fc" id="L61">                        System.out.print(rs.getString(7)+&quot;    &quot;);</span>
+<span class="fc" id="L62">                        System.out.println();</span>
+                    }
+<span class="fc" id="L64">                    stmt.close();</span>
+<span class="fc" id="L65">                    c.close();</span>
+<span class="fc" id="L66">                    rs.close();</span>
+<span class="fc" id="L67">                    return &quot;available&quot;;</span>
+                }
+            }
+        }
+<span class="nc" id="L71">        catch (Exception e) {System.err.println(e.getClass().getName() + &quot;: &quot; + e.getMessage());System.exit(0);return &quot;error&quot;;}</span>
+
+    }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.8.202204050719</span></div></body></html>

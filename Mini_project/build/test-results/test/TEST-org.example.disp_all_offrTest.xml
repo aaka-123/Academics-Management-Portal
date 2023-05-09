@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="org.example.disp_all_offrTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2023-03-07T04:31:51" hostname="DESKTOP-HV7JIS6" time="0.083">
+  <properties/>
+  <testcase name="disp()" classname="org.example.disp_all_offrTest" time="0.083"/>
+  <system-out><![CDATA[Offer Id  Course  year  semester  Instr_id     CGPA Required  type  
+2011       CP301-3   2023  2         2016CSI1112  0              PC    
+2005       CP301-2   2023  1         2008CSI1060  0              PC    
+2034       CS546   2023  1         2008CSI1060  0              PE    
+2009       HS507   2023  2         2016CSI1112  0              E    
+2017       CS546   2023  2         2016CSI1112  0              PE    
+2010       CP301-1   2022  2         2016CSI1112  5              PC    
+]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

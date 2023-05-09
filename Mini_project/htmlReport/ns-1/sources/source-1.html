@@ -1,0 +1,343 @@
+
+
+
+<!DOCTYPE html>
+<html id="htmlId">
+<head>
+  <title>Coverage Report > create_database</title>
+  <style type="text/css">
+    @import "../../css/coverage.css";
+    @import "../../css/idea.min.css";
+  </style>
+  <script type="text/javascript" src="../../js/highlight.min.js"></script>
+  <script type="text/javascript" src="../../js/highlightjs-line-numbers.min.js"></script>
+</head>
+
+<body>
+<div class="content">
+<div class="breadCrumbs">
+Current scope:     <a href="../../index.html">all classes</a>
+    <span class="separator">|</span>
+    <a href="../index.html">&lt;empty package name&gt;</a>
+</div>
+
+<h1>Coverage Summary for Class: create_database (&lt;empty package name&gt;)</h1>
+
+<table class="coverageStats">
+<tr>
+  <th class="name">Class</th>
+<th class="coverageStat 
+">
+  Class, %
+</th>
+<th class="coverageStat 
+">
+  Method, %
+</th>
+<th class="coverageStat 
+">
+  Line, %
+</th>
+</tr>
+<tr>
+  <td class="name">create_database</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/1)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/2)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/169)
+  </span>
+</td>
+</tr>
+
+</table>
+
+<br/>
+<br/>
+
+
+<pre>
+<code class="sourceCode" id="sourceCode">&nbsp;import java.util.*;
+&nbsp;import java.io.*;
+&nbsp;import java.nio.charset.StandardCharsets;
+&nbsp;import java.sql.*;
+&nbsp;import javax.sound.sampled.SourceDataLine;
+&nbsp;
+<b class="nc">&nbsp;public class create_database {</b>
+&nbsp;
+&nbsp;    static final String JDBC_DRIVER = &quot;org.postgresql.Driver&quot;;
+&nbsp;    static final String DB_URL = &quot;jdbc:postgresql://localhost:5432/postgres&quot;;
+&nbsp;
+&nbsp;    static final String USER = &quot;postgres&quot;;
+&nbsp;    static final String PASS = &quot;postgres&quot;;
+&nbsp;
+&nbsp;    public static void main(String[] args) {
+&nbsp;      
+<b class="nc">&nbsp; String q3=&quot;create table course_cat(name varchar(50) not null,course_id varchar(30) not null,l int not null,t int not null,p int not null ,c int not null ,dept varchar(10),type varchar(10),primary key(course_id));&quot;;</b>
+<b class="nc">&nbsp; String q14=&quot;insert into course_cat values(&#39;PROGRAMMING PARADIGMS AND PRAGMATICS&#39;,&#39;CS202&#39;,3,1,2,4,&#39;CSE&#39;,&#39;PC&#39;);insert into course_cat values(&#39;COMPUTER ARCHITECTURE&#39;,&#39;CS204&#39;,3,1,2,4,&#39;CSE&#39;,&#39;PC&#39;);insert into course_cat values(&#39;DATABASES&#39;,&#39;CS301&#39;,3,1,2,4,&#39;CSE&#39;,&#39;PC&#39;);insert into course_cat values(&#39;ANALYSIS AND DESIGN OF ALGORITHMS&#39;,&#39;CS302&#39;,3,1,0,3,&#39;CSE&#39;,&#39;PC&#39;);insert into course_cat values(&#39;OPERATING SYSTEMS&#39;,&#39;CS303&#39;,3,1,2,4,&#39;CSE&#39;,&#39;PC&#39;);insert into course_cat values(&#39;Digital images&#39;,&#39;CS517&#39;,3,1,2,3,&#39;CSE&#39;,&#39;PE&#39;);insert into course_cat values(&#39;Computer vision&#39;,&#39;CS535&#39;,3,1,2,3,&#39;CSE&#39;,&#39;PE&#39;);insert into course_cat values(&#39;Machine learning&#39;,&#39;CS546&#39;,3,1,2,3,&#39;CSE&#39;,&#39;PE&#39;);insert into course_cat values(&#39;Fantasy&#39;,&#39;HS491&#39;,3,1,2,3,&#39;CSE&#39;,&#39;E&#39;);insert into course_cat values(&#39;professional ethics&#39;,&#39;HS507&#39;,3,1,2,3,&#39;CSE&#39;,&#39;E&#39;);insert into course_cat values(&#39;Capstone &#39;,&#39;CP301-1&#39;,0,0,0,3,&#39;&#39;,&#39;PC&#39;);insert into course_cat values(&#39;Capstone &#39;,&#39;CP301-2&#39;,0,0,0,3,&#39;&#39;,&#39;PC&#39;);insert into course_cat values(&#39;Capstone &#39;,&#39;CP301-3&#39;,0,0,0,3,&#39;&#39;,&#39;PC&#39;);&quot;;</b>
+<b class="nc">&nbsp; String q5=&quot;create table dept(name varchar(15),hod varchar(40) not NULL,primary key(name));&quot;;</b>
+<b class="nc">&nbsp; String q2=&quot;insert into dept values(&#39;CSE&#39;,&#39;Sudershan Iyengar&#39;);insert into dept values(&#39;EE&#39;,&#39;S Murala&#39;);&quot;;</b>
+<b class="nc">&nbsp; String q4=&quot;create table instructor(name varchar(40) not null,instr_id varchar(15) primary key,dept varchar(15),foreign key(dept) references dept(name));&quot;;</b>
+<b class="nc">&nbsp; String q1=&quot;insert into instructor values(&#39;Puneet Goyal&#39;,&#39;2020CSI1060&#39;,&#39;CSE&#39;);insert into instructor values(&#39;Balwinder Sodhi&#39;,&#39;2008CSI1060&#39;,&#39;CSE&#39;);insert into instructor values(&#39;Neeraj Goel&#39;,&#39;2016CSI1112&#39;,&#39;CSE&#39;);insert into instructor values(&#39;Anil SHukla&#39;,&#39;2012CSI1134&#39;,&#39;CSE&#39;);insert into instructor values(&#39;Sujata Pal&#39;,&#39;2018CSI1260&#39;,&#39;CSE&#39;);insert into instructor values(&#39;Shirshendu Das&#39;,&#39;2019CSI1012&#39;,&#39;CSE&#39;);&quot;;</b>
+&nbsp;
+<b class="nc">&nbsp; String q6=&quot;create table HOD(instr_id varchar(20),dept varchar(20) PRIMARY KEY,FOREIGN KEY(instr_id) references instructor(instr_id),  FOREIGN KEY(dept) references dept(name));&quot;;</b>
+&nbsp; 
+&nbsp; 
+&nbsp; 
+<b class="nc">&nbsp; String q7=&quot;create table course_offer(offr_id serial primary key,course_id varchar(20) not null, year integer not null,semester integer not null,instr_id varchar(30) not null, cgpa_req double precision,dept varchar(10),type varchar(10),foreign key(course_id) references course_cat(course_id), foreign key(instr_id) references instructor(instr_id));&quot;;</b>
+<b class="nc">&nbsp; String q15=&quot;insert into course_offer values(2001,&#39;CS202&#39;,2022,2,&#39;2008CSI1060&#39;,2,&#39;CSE&#39;,&#39;PC&#39;);insert into course_offer values(2002,&#39;CS204&#39;,2022,2,&#39;2008CSI1060&#39;,5,&#39;CSE&#39;,&#39;PC&#39;);insert into course_offer values(2003,&#39;CS301&#39;,2023,1,&#39;2008CSI1060&#39;,7,&#39;CSE&#39;,&#39;PC&#39;);insert into course_offer values(2004,&#39;CS302&#39;,2023,2,&#39;2008CSI1060&#39;,5,&#39;CSE&#39;,&#39;PC&#39;);insert into course_offer values(2005,&#39;CS303&#39;,2023,2,&#39;2016CSI1112&#39;,8,&#39;CSE&#39;,&#39;PC&#39;);insert into course_offer values(2006,&#39;CS517&#39;,2022,1,&#39;2016CSI1112&#39;,4,&#39;CSE&#39;,&#39;PE&#39;);insert into course_offer values(2007,&#39;CS535&#39;,2022,1,&#39;2016CSI1112&#39;,4,&#39;CSE&#39;,&#39;PE&#39;);insert into course_offer values(2008,&#39;CS546&#39;,2020,1,&#39;2016CSI1112&#39;,0,&#39;CSE&#39;,&#39;PE&#39;);insert into course_offer values(2009,&#39;HS507&#39;,2023,2,&#39;2016CSI1112&#39;,0,&#39;CSE&#39;,&#39;E&#39;);insert into course_offer values(2014,&#39;CP301-1&#39;,2022,2,&#39;2016CSI1112&#39;,5,&#39;&#39;,&#39;PC&#39;);insert into course_offer values(2015,&#39;CP301-2&#39;,2023,1,&#39;2008CSI1060&#39;,5,&#39;&#39;,&#39;PC&#39;);insert into course_offer values(2016,&#39;CP301-3&#39;,2023,2,&#39;2016CSI1112&#39;,5,&#39;&#39;,&#39;PC&#39;);insert into course_offer values(2017,&#39;CS546&#39;,2023,2,&#39;2016CSI1112&#39;,0,&#39;CSE&#39;,&#39;PE&#39;);&quot;;</b>
+<b class="nc">&nbsp; String q8=&quot;CREATE TABLE student_transcript(offr_id int not null,stu_id varchar(20),course_id varchar(15) not null,year int not null,sem integer not null,grade int,credits double precision,status varchar(15),type varchar(5),PRIMARY KEY (offr_id,stu_id));&quot;;</b>
+<b class="nc">&nbsp; String q16=&quot;insert into student_transcript values(2001,&#39;2020CSB1060&#39;,&#39;CS202&#39;,2020,2,&#39;NA&#39;,0,&#39;running&#39;,&#39;PC&#39;);insert into student_transcript values(2002,&#39;2020CSB1060&#39;,&#39;CS204&#39;,2020,2,&#39;NA&#39;,0,&#39;running&#39;,&#39;PC&#39;);insert into student_transcript values(2003,&#39;2020CSB1060&#39;,&#39;CS301&#39;,2023,1,&#39;NA&#39;,0,&#39;running&#39;,&#39;PC&#39;);insert into student_transcript values(2004,&#39;2020CSB1060&#39;,&#39;CS302&#39;,2023,2,&#39;NA&#39;,0,&#39;running&#39;,&#39;PC&#39;);insert into student_transcript values(2005,&#39;2020CSB1060&#39;,&#39;CS303&#39;,2023,2,&#39;NA&#39;,0,&#39;running&#39;,&#39;PC&#39;);insert into student_transcript values(2006,&#39;2020CSB1060&#39;,&#39;CS517&#39;,2022,1,&#39;NA&#39;,0,&#39;running&#39;,&#39;PE&#39;);insert into student_transcript values(2007,&#39;2020CSB1060&#39;,&#39;CS535&#39;,2022,1,&#39;NA&#39;,0,&#39;running&#39;,&#39;PE&#39;);insert into student_transcript values(2007,&#39;2020CSB1062&#39;,&#39;CS535&#39;,2022,1,&#39;NA&#39;,0,&#39;running&#39;,&#39;PE&#39;);insert into student_transcript values(2002,&#39;2020CSB1062&#39;,&#39;CS204&#39;,2022,2,&#39;NA&#39;,0,&#39;running&#39;,&#39;PC&#39;);insert into student_transcript values(2003,&#39;2020CSB1062&#39;,&#39;CS301&#39;,2023,1,&#39;NA&#39;,0,&#39;running&#39;,&#39;PC&#39;);insert into student_transcript values(2001,&#39;2020CSB1061&#39;,&#39;CS202&#39;,2020,2,&#39;NA&#39;,0,&#39;running&#39;,&#39;PC&#39;);insert into student_transcript values(2002,&#39;2020CSB1061&#39;,&#39;CS204&#39;,2020,2,&#39;NA&#39;,0,&#39;running&#39;,&#39;PC&#39;);insert into student_transcript values(2003,&#39;2020CSB1061&#39;,&#39;CS301&#39;,2023,1,&#39;NA&#39;,0,&#39;running&#39;,&#39;PC&#39;);insert into student_transcript values(2004,&#39;2020CSB1061&#39;,&#39;CS302&#39;,2023,2,&#39;NA&#39;,0,&#39;running&#39;,&#39;PC&#39;);insert into student_transcript values(2005,&#39;2020CSB1061&#39;,&#39;CS303&#39;,2023,2,&#39;NA&#39;,0,&#39;running&#39;,&#39;PC&#39;);insert into student_transcript values(2006,&#39;2020CSB1061&#39;,&#39;CS517&#39;,2022,1,&#39;NA&#39;,0,&#39;running&#39;,&#39;PE&#39;);insert into student_transcript values(2007,&#39;2020CSB1061&#39;,&#39;CS535&#39;,2022,1,&#39;NA&#39;,0,&#39;running&#39;,&#39;PE&#39;);insert into student_transcript values(2017,&#39;2020CSB1063&#39;,&#39;CS546&#39;,2023,2,&#39;NA&#39;,0,&#39;running&#39;,&#39;PE&#39;);&quot;;</b>
+&nbsp;
+<b class="nc">&nbsp; String q9=&quot;create table auth(user_name varchar(50) primary key,pswd varchar(50) not null,role varchar(20) not null);&quot;;</b>
+&nbsp; 
+&nbsp;
+<b class="nc">&nbsp; String q10=&quot;create table student(name varchar(30),entry_no varchar(15) primary key,grad_cred int,dept varchar(10));&quot;;</b>
+&nbsp; 
+&nbsp; 
+<b class="nc">&nbsp; String q11=&quot;create table semester(year int not null,sem int not null,status boolean,primary key(year,sem));&quot;;</b>
+&nbsp;
+<b class="nc">&nbsp; String q12=&quot;create table pre_req (course_id varchar(10) primary key,pre_req text[]);&quot;;</b>
+&nbsp; 
+<b class="nc">&nbsp; String q13=&quot;insert into auth values(&#39;2020CSB1060&#39;,&#39;iitropar&#39;,&#39;student&#39;);insert into auth values(&#39;2020CSB1061&#39;,&#39;iitropar&#39;,&#39;student&#39;);insert into auth values(&#39;2020CSB1062&#39;,&#39;iitropar&#39;,&#39;student&#39;);insert into auth values(&#39;2020EEB1263&#39;,&#39;iitropar&#39;,&#39;student&#39;);insert into auth values(&#39;2020EEB1264&#39;,&#39;iitropar&#39;,&#39;student&#39;);insert into auth values(&#39;2020EEB1265&#39;,&#39;iitropar&#39;,&#39;student&#39;);insert into auth values(&#39;2020MEB1463&#39;,&#39;iitropar&#39;,&#39;student&#39;);insert into auth values(&#39;2020MEB1464&#39;,&#39;iitropar&#39;,&#39;student&#39;);insert into auth values(&#39;2020MEB1465&#39;,&#39;iitropar&#39;,&#39;student&#39;);insert into auth values(&#39;2008CSI1060&#39;,&#39;iitropar&#39;,&#39;faculty&#39;);insert into auth values(&#39;2016CSI1112&#39;,&#39;iitropar&#39;,&#39;faculty&#39;);insert into auth values(&#39;2020EEI1062&#39;,&#39;iitropar&#39;,&#39;faculty&#39;);insert into auth values(&#39;2017EEI1263&#39;,&#39;iitropar&#39;,&#39;faculty&#39;);insert into auth values(&#39;2020ADM1113&#39;,&#39;iitropar&#39;,&#39;admin&#39;);insert into auth values(&#39;2016ADM1112&#39;,&#39;iitropar&#39;,&#39;admin&#39;);&quot;;</b>
+&nbsp; 
+&nbsp; 
+<b class="nc">&nbsp;String q17=&quot;insert into semester values(2020,1,&#39;f&#39;);insert into semester values(2020,2,&#39;f&#39;);insert into semester values(2021,1,&#39;f&#39;);insert into semester values(2021,2,&#39;f&#39;);insert into semester values(2022,1,&#39;f&#39;);insert into semester values(2022,2,&#39;f&#39;);insert into semester values(2023,1,&#39;f&#39;);insert into semester values(2023,2,&#39;t&#39;);&quot;;</b>
+&nbsp;
+&nbsp;
+&nbsp;
+<b class="nc">&nbsp;Connection c = null;</b>
+<b class="nc">&nbsp;        Statement stmt = null;</b>
+&nbsp;        
+&nbsp;        try {
+<b class="nc">&nbsp;            c = DriverManager.getConnection(DB_URL, USER, PASS);</b>
+<b class="nc">&nbsp;            stmt = c.createStatement();</b>
+&nbsp;
+<b class="nc">&nbsp;            stmt.executeUpdate(q3);</b>
+<b class="nc">&nbsp;            stmt.close();</b>
+<b class="nc">&nbsp;            c.close();</b>
+<b class="nc">&nbsp;        } catch (Exception e) {</b>
+<b class="nc">&nbsp;            System.err.println(e.getClass().getName() + &quot;: &quot; + e.getMessage());</b>
+<b class="nc">&nbsp;            System.exit(0);</b>
+<b class="nc">&nbsp;        }</b>
+&nbsp;        try {
+<b class="nc">&nbsp;            c = DriverManager.getConnection(DB_URL, USER, PASS);</b>
+<b class="nc">&nbsp;            stmt = c.createStatement();</b>
+<b class="nc">&nbsp;            stmt.executeUpdate(q14);</b>
+<b class="nc">&nbsp;            stmt.close();</b>
+<b class="nc">&nbsp;            c.close();</b>
+<b class="nc">&nbsp;        } catch (Exception e) {</b>
+<b class="nc">&nbsp;            System.err.println(e.getClass().getName() + &quot;: &quot; + e.getMessage());</b>
+<b class="nc">&nbsp;        }</b>
+&nbsp;        try {
+<b class="nc">&nbsp;            c = DriverManager.getConnection(DB_URL, USER, PASS);</b>
+<b class="nc">&nbsp;            stmt = c.createStatement();</b>
+&nbsp;
+<b class="nc">&nbsp;            stmt.executeUpdate(q5);</b>
+<b class="nc">&nbsp;            stmt.close();</b>
+<b class="nc">&nbsp;            c.close();</b>
+<b class="nc">&nbsp;        } catch (Exception e) {</b>
+<b class="nc">&nbsp;            System.err.println(e.getClass().getName() + &quot;: &quot; + e.getMessage());</b>
+<b class="nc">&nbsp;            System.exit(0);</b>
+<b class="nc">&nbsp;        }</b>
+&nbsp;        try {
+<b class="nc">&nbsp;            c = DriverManager.getConnection(DB_URL, USER, PASS);</b>
+<b class="nc">&nbsp;            stmt = c.createStatement();</b>
+&nbsp;
+<b class="nc">&nbsp;            stmt.executeUpdate(q2);</b>
+<b class="nc">&nbsp;            stmt.close();</b>
+<b class="nc">&nbsp;            c.close();</b>
+<b class="nc">&nbsp;        } catch (Exception e) {</b>
+<b class="nc">&nbsp;            System.err.println(e.getClass().getName() + &quot;: &quot; + e.getMessage());</b>
+<b class="nc">&nbsp;            System.exit(0);</b>
+<b class="nc">&nbsp;        }</b>
+&nbsp;        try {
+<b class="nc">&nbsp;            c = DriverManager.getConnection(DB_URL, USER, PASS);</b>
+<b class="nc">&nbsp;            stmt = c.createStatement();</b>
+&nbsp;
+<b class="nc">&nbsp;            stmt.executeUpdate(q4);</b>
+<b class="nc">&nbsp;            stmt.close();</b>
+<b class="nc">&nbsp;            c.close();</b>
+<b class="nc">&nbsp;        } catch (Exception e) {</b>
+<b class="nc">&nbsp;            System.err.println(e.getClass().getName() + &quot;: &quot; + e.getMessage());</b>
+<b class="nc">&nbsp;            System.exit(0);</b>
+<b class="nc">&nbsp;        }</b>
+&nbsp;        try {
+<b class="nc">&nbsp;            c = DriverManager.getConnection(DB_URL, USER, PASS);</b>
+<b class="nc">&nbsp;            stmt = c.createStatement();</b>
+&nbsp;
+<b class="nc">&nbsp;            stmt.executeUpdate(q1);</b>
+<b class="nc">&nbsp;            stmt.close();</b>
+<b class="nc">&nbsp;            c.close();</b>
+<b class="nc">&nbsp;        } catch (Exception e) {</b>
+<b class="nc">&nbsp;            System.err.println(e.getClass().getName() + &quot;: &quot; + e.getMessage());</b>
+<b class="nc">&nbsp;            System.exit(0);</b>
+<b class="nc">&nbsp;        }</b>
+&nbsp;        try {
+<b class="nc">&nbsp;            c = DriverManager.getConnection(DB_URL, USER, PASS);</b>
+<b class="nc">&nbsp;            stmt = c.createStatement();</b>
+&nbsp;
+<b class="nc">&nbsp;            stmt.executeUpdate(q6);</b>
+<b class="nc">&nbsp;            stmt.close();</b>
+<b class="nc">&nbsp;            c.close();</b>
+<b class="nc">&nbsp;        } catch (Exception e) {</b>
+<b class="nc">&nbsp;            System.err.println(e.getClass().getName() + &quot;: &quot; + e.getMessage());</b>
+<b class="nc">&nbsp;            System.exit(0);</b>
+<b class="nc">&nbsp;        }</b>
+&nbsp;
+&nbsp;        try {
+<b class="nc">&nbsp;            c = DriverManager.getConnection(DB_URL, USER, PASS);</b>
+<b class="nc">&nbsp;            stmt = c.createStatement();</b>
+<b class="nc">&nbsp;            stmt.executeUpdate(q7);</b>
+<b class="nc">&nbsp;            stmt.close();</b>
+<b class="nc">&nbsp;            c.close();</b>
+<b class="nc">&nbsp;        } catch (Exception e) {</b>
+<b class="nc">&nbsp;            System.err.println(e.getClass().getName() + &quot;: &quot; + e.getMessage());</b>
+<b class="nc">&nbsp;            System.exit(0);</b>
+<b class="nc">&nbsp;        }</b>
+&nbsp;        try {
+<b class="nc">&nbsp;            c = DriverManager.getConnection(DB_URL, USER, PASS);</b>
+<b class="nc">&nbsp;            stmt = c.createStatement();</b>
+<b class="nc">&nbsp;            stmt.executeUpdate(q15);</b>
+<b class="nc">&nbsp;            stmt.close();</b>
+<b class="nc">&nbsp;            c.close();</b>
+<b class="nc">&nbsp;        } catch (Exception e) {</b>
+<b class="nc">&nbsp;            System.err.println(e.getClass().getName() + &quot;: &quot; + e.getMessage());</b>
+<b class="nc">&nbsp;        }</b>
+&nbsp;        
+&nbsp;        try {
+<b class="nc">&nbsp;            c = DriverManager.getConnection(DB_URL, USER, PASS);</b>
+<b class="nc">&nbsp;            stmt = c.createStatement();</b>
+<b class="nc">&nbsp;            stmt.executeUpdate(q8);</b>
+<b class="nc">&nbsp;            stmt.close();</b>
+<b class="nc">&nbsp;            c.close();</b>
+<b class="nc">&nbsp;        } catch (Exception e) {</b>
+<b class="nc">&nbsp;            System.err.println(e.getClass().getName() + &quot;: &quot; + e.getMessage());</b>
+<b class="nc">&nbsp;            System.exit(0);</b>
+<b class="nc">&nbsp;        }</b>
+&nbsp;        try {
+<b class="nc">&nbsp;            c = DriverManager.getConnection(DB_URL, USER, PASS);</b>
+<b class="nc">&nbsp;            stmt = c.createStatement();</b>
+<b class="nc">&nbsp;            stmt.executeUpdate(q16);</b>
+<b class="nc">&nbsp;            stmt.close();</b>
+<b class="nc">&nbsp;            c.close();</b>
+<b class="nc">&nbsp;        } catch (Exception e) {</b>
+<b class="nc">&nbsp;            System.err.println(e.getClass().getName() + &quot;: &quot; + e.getMessage());</b>
+<b class="nc">&nbsp;        }</b>
+&nbsp;        try {
+<b class="nc">&nbsp;            c = DriverManager.getConnection(DB_URL, USER, PASS);</b>
+<b class="nc">&nbsp;            stmt = c.createStatement();</b>
+<b class="nc">&nbsp;            stmt.executeUpdate(q9);</b>
+<b class="nc">&nbsp;            stmt.close();</b>
+<b class="nc">&nbsp;            c.close();</b>
+<b class="nc">&nbsp;        } catch (Exception e) {</b>
+<b class="nc">&nbsp;            System.err.println(e.getClass().getName() + &quot;: &quot; + e.getMessage());</b>
+<b class="nc">&nbsp;            System.exit(0);</b>
+<b class="nc">&nbsp;        }</b>
+&nbsp;
+&nbsp;        try {
+<b class="nc">&nbsp;            c = DriverManager.getConnection(DB_URL, USER, PASS);</b>
+<b class="nc">&nbsp;            stmt = c.createStatement();</b>
+<b class="nc">&nbsp;            stmt.executeUpdate(q10);</b>
+<b class="nc">&nbsp;            stmt.close();</b>
+<b class="nc">&nbsp;            c.close();</b>
+<b class="nc">&nbsp;        } catch (Exception e) {</b>
+<b class="nc">&nbsp;            System.err.println(e.getClass().getName() + &quot;: &quot; + e.getMessage());</b>
+<b class="nc">&nbsp;            System.exit(0);</b>
+<b class="nc">&nbsp;        }</b>
+&nbsp;        try {
+<b class="nc">&nbsp;            c = DriverManager.getConnection(DB_URL, USER, PASS);</b>
+<b class="nc">&nbsp;            stmt = c.createStatement();</b>
+<b class="nc">&nbsp;            stmt.executeUpdate(q11);</b>
+<b class="nc">&nbsp;            stmt.close();</b>
+<b class="nc">&nbsp;            c.close();</b>
+<b class="nc">&nbsp;        } catch (Exception e) {</b>
+<b class="nc">&nbsp;            System.err.println(e.getClass().getName() + &quot;: &quot; + e.getMessage());</b>
+<b class="nc">&nbsp;            System.exit(0);</b>
+<b class="nc">&nbsp;        }</b>
+&nbsp;
+&nbsp;        try {
+<b class="nc">&nbsp;            c = DriverManager.getConnection(DB_URL, USER, PASS);</b>
+<b class="nc">&nbsp;            stmt = c.createStatement();</b>
+<b class="nc">&nbsp;            stmt.executeUpdate(q12);</b>
+<b class="nc">&nbsp;            stmt.close();</b>
+<b class="nc">&nbsp;            c.close();</b>
+<b class="nc">&nbsp;        } catch (Exception e) {</b>
+<b class="nc">&nbsp;            System.err.println(e.getClass().getName() + &quot;: &quot; + e.getMessage());</b>
+<b class="nc">&nbsp;            System.exit(0);</b>
+<b class="nc">&nbsp;        }</b>
+&nbsp;        try {
+<b class="nc">&nbsp;            c = DriverManager.getConnection(DB_URL, USER, PASS);</b>
+<b class="nc">&nbsp;            stmt = c.createStatement();</b>
+<b class="nc">&nbsp;            stmt.executeUpdate(q13);</b>
+<b class="nc">&nbsp;            stmt.close();</b>
+<b class="nc">&nbsp;            c.close();</b>
+<b class="nc">&nbsp;        } catch (Exception e) {</b>
+<b class="nc">&nbsp;            System.err.println(e.getClass().getName() + &quot;: &quot; + e.getMessage());</b>
+<b class="nc">&nbsp;        }</b>
+&nbsp;          
+&nbsp;               
+&nbsp;                    
+&nbsp;                       
+&nbsp;                            try {
+<b class="nc">&nbsp;                                c = DriverManager.getConnection(DB_URL, USER, PASS);</b>
+<b class="nc">&nbsp;                                stmt = c.createStatement();</b>
+<b class="nc">&nbsp;                                stmt.executeUpdate(q17);</b>
+<b class="nc">&nbsp;                                stmt.close();</b>
+<b class="nc">&nbsp;                                c.close();</b>
+<b class="nc">&nbsp;                            } catch (Exception e) {</b>
+<b class="nc">&nbsp;                                System.err.println(e.getClass().getName() + &quot;: &quot; + e.getMessage());</b>
+&nbsp;                              
+<b class="nc">&nbsp;                            }</b>
+&nbsp;
+&nbsp;
+&nbsp;
+<b class="nc">&nbsp;        System.out.println(&quot;Databse Created Successfully.&quot;);</b>
+&nbsp;
+&nbsp;                            }
+&nbsp;
+&nbsp;}
+</code>
+</pre>
+</div>
+
+<script type="text/javascript">
+(function() {
+    var msie = false, msie9 = false;
+    /*@cc_on
+      msie = true;
+      @if (@_jscript_version >= 9)
+        msie9 = true;
+      @end
+    @*/
+
+    if (!msie || msie && msie9) {
+      hljs.highlightAll()
+      hljs.initLineNumbersOnLoad();
+    }
+})();
+</script>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2023-03-06 21:50</div>
+</div>
+</body>
+</html>

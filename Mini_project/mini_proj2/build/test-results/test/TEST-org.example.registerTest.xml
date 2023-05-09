@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="org.example.registerTest" tests="2" skipped="0" failures="0" errors="0" timestamp="2023-03-07T04:31:54" hostname="DESKTOP-HV7JIS6" time="0.439">
+  <properties/>
+  <testcase name="deregister()" classname="org.example.registerTest" time="0.134"/>
+  <testcase name="register()" classname="org.example.registerTest" time="0.304"/>
+  <system-out><![CDATA[select status,course_id from student_transcript where stu_id='2020CSB1063' and offr_id=2007
+Enter correct offer id!!!
+select status,course_id from student_transcript where stu_id='2020CSB1060' and offr_id=2001
+Course has already Completed!!!
+Yes you are eligible for this course
+select c from course_cat where course_id='CP301-2'
+insert into student_transcript values(2005,'2020CSB1063','CP301-2',2023,1,'NA',0,'running','PC');
+Your Registration into course CP301-2 has been done.
+This course is not offered in the current semester!!!
+]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

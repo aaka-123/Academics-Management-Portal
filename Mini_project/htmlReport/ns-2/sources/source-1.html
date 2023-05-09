@@ -1,0 +1,180 @@
+
+
+
+<!DOCTYPE html>
+<html id="htmlId">
+<head>
+  <title>Coverage Report > CGPA</title>
+  <style type="text/css">
+    @import "../../css/coverage.css";
+    @import "../../css/idea.min.css";
+  </style>
+  <script type="text/javascript" src="../../js/highlight.min.js"></script>
+  <script type="text/javascript" src="../../js/highlightjs-line-numbers.min.js"></script>
+</head>
+
+<body>
+<div class="content">
+<div class="breadCrumbs">
+Current scope:     <a href="../../index.html">all classes</a>
+    <span class="separator">|</span>
+    <a href="../index.html">org.example</a>
+</div>
+
+<h1>Coverage Summary for Class: CGPA (org.example)</h1>
+
+<table class="coverageStats">
+<tr>
+  <th class="name">Class</th>
+<th class="coverageStat 
+">
+  Class, %
+</th>
+<th class="coverageStat 
+">
+  Method, %
+</th>
+<th class="coverageStat 
+">
+  Line, %
+</th>
+</tr>
+<tr>
+  <td class="name">CGPA</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (1/1)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (3/3)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (40/40)
+  </span>
+</td>
+</tr>
+
+</table>
+
+<br/>
+<br/>
+
+
+<pre>
+<code class="sourceCode" id="sourceCode">&nbsp;package org.example;
+&nbsp;
+&nbsp;import java.sql.*;
+&nbsp;import java.io.*;
+&nbsp;
+&nbsp;import java.util.Scanner;
+&nbsp;import java.sql.*;
+&nbsp;
+<b class="fc">&nbsp;public class CGPA {</b>
+&nbsp;
+&nbsp;    static final String JDBC_DRIVER = &quot;org.postgresql.Driver&quot;;
+&nbsp;    static final String DB_URL = &quot;jdbc:postgresql://localhost:5432/aims&quot;;
+&nbsp;
+&nbsp;    static final String USER = &quot;postgres&quot;;
+&nbsp;    static final String PASS = &quot;postgres&quot;;
+&nbsp;
+&nbsp;    public  boolean calc_gpa(String id) {
+<b class="fc">&nbsp;    boolean x=true;</b>
+<b class="fc">&nbsp;        Connection c = null;</b>
+<b class="fc">&nbsp;        Statement stmt = null;</b>
+&nbsp;        try {
+<b class="fc">&nbsp;            c = DriverManager.getConnection(DB_URL, USER, PASS);</b>
+<b class="fc">&nbsp;            stmt = c.createStatement();</b>
+<b class="fc">&nbsp;            String query = &quot; CREATE OR REPLACE FUNCTION calc_gpa( id varchar) RETURNS float AS $$  DECLARE pre_req text[];  cred_point float; earned_cred float; cgpa float; rec record;  c CURSOR (key text) FOR (select t.grade ,ct.c,t.credits from student_transcript t,course_cat ct where t.stu_id=key and ct.course_id=t.course_id);  BEGIN  cred_point=0; earned_cred=0; OPEN c(id);  Loop FETCH FROM c INTO rec;  if not found then exit ; else  if rec.grade=&#39;A&#39; then cred_point=cred_point+(10*(rec.c)); elseif rec.grade=&#39;A-&#39; then cred_point=cred_point+(9*(rec.c)); elseif rec.grade=&#39;B&#39; then cred_point=cred_point+(8*(rec.c)); elseif rec.grade=&#39;B-&#39; then cred_point=cred_point+(7*(rec.c)); elseif rec.grade=&#39;C&#39; then cred_point=cred_point+(6*(rec.c)); elseif rec.grade=&#39;C-&#39; then cred_point=cred_point+(5*(rec.c)); elseif rec.grade=&#39;D&#39; then cred_point=cred_point+(4*(rec.c)); elseif rec.grade=&#39;D-&#39; then cred_point=cred_point+(3*(rec.c)); end if;end if; end loop;  CLOSE c; OPEN c(id);  Loop FETCH FROM c INTO rec;  if not found then exit ; else  if rec.grade!=&#39;Z&#39; and  rec.grade!=&#39;S&#39; and  rec.grade!=&#39;NP&#39; and rec.grade!=&#39;NF&#39; then  earned_cred=earned_cred+(rec.credits); end if; end if; end loop; CLOSE c; if earned_cred=0  then return 0; else  cgpa=cred_point/earned_cred; cgpa=(select ROUND(cgpa::numeric, 2)); return cgpa; end if; end;  $$ language plpgsql;&quot;;</b>
+&nbsp;            // System.out.println(query);
+<b class="fc">&nbsp;            stmt.executeUpdate(query);</b>
+&nbsp;
+<b class="fc">&nbsp;            CallableStatement cst = c.prepareCall(&quot;{call calc_gpa(?,?)}&quot;);</b>
+&nbsp;
+<b class="fc">&nbsp;            cst.setString(1,id);</b>
+&nbsp;
+<b class="fc">&nbsp;            cst.registerOutParameter(2, Types.FLOAT);</b>
+&nbsp;
+<b class="fc">&nbsp;            cst.execute();</b>
+<b class="fc">&nbsp;            System.out.println(&quot;Function executed successfully&quot;);</b>
+<b class="fc">&nbsp;            double ans= cst.getDouble(2);</b>
+<b class="fc">&nbsp;            System.out.println(ans);</b>
+&nbsp;            // System.out.println(pnr);
+<b class="fc">&nbsp;            cst.close();</b>
+<b class="fc">&nbsp;            stmt.close();</b>
+<b class="fc">&nbsp;            c.close();</b>
+&nbsp;
+&nbsp;        }
+<b class="fc">&nbsp;        catch (Exception e) {x=false;System.err.println(e.getClass().getName() + &quot;: &quot; + e.getMessage());System.exit(0);}</b>
+<b class="fc">&nbsp;return x;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public boolean calc_sgpa(String id,int yr,int sm) {
+<b class="fc">&nbsp;        Connection c = null;</b>
+<b class="fc">&nbsp;        Statement stmt = null;</b>
+<b class="fc">&nbsp;        boolean x=true;</b>
+&nbsp;        try {
+<b class="fc">&nbsp;            c = DriverManager.getConnection(DB_URL, USER, PASS);</b>
+<b class="fc">&nbsp;            stmt = c.createStatement();</b>
+<b class="fc">&nbsp;            String query = &quot;  CREATE OR REPLACE FUNCTION calc_sgpa( id varchar,yr int,sm int) RETURNS float AS $$  DECLARE pre_req text[];   cred_point float; earned_cred float; sgpa float; rec record;c CURSOR (key text,semm int,yrr int) FOR (select t.grade ,ct.c,t.credits from student_transcript t,course_cat ct where t.stu_id=key and ct.course_id=t.course_id and t.year=yrr and t.sem=semm);  BEGIN  cred_point=0; earned_cred=0; OPEN c(id,sm,yr);  Loop FETCH FROM c INTO rec;  if not found then exit ; else  if rec.grade=&#39;A&#39; then cred_point=cred_point+(10*(rec.c));  elseif rec.grade=&#39;A-&#39; then cred_point=cred_point+(9*(rec.c));  elseif rec.grade=&#39;B&#39; then cred_point=cred_point+(8*(rec.c)); elseif rec.grade=&#39;B-&#39; then cred_point=cred_point+(7*(rec.c));  elseif rec.grade=&#39;C&#39; then cred_point=cred_point+(6*(rec.c)); elseif rec.grade=&#39;C-&#39; then cred_point=cred_point+(5*(rec.c));  elseif rec.grade=&#39;D&#39; then cred_point=cred_point+(4*(rec.c)); elseif rec.grade=&#39;D-&#39; then cred_point=cred_point+(3*(rec.c)); elseif rec.grade=&#39;E&#39; then cred_point=cred_point+(2*(rec.c));  end if;end if; end loop;  CLOSE c; OPEN c(id,sm,yr);  Loop FETCH FROM c INTO rec;  if not found then exit ;  else  if rec.grade!=&#39;Z&#39; and  rec.grade!=&#39;S&#39; and  rec.grade!=&#39;NP&#39; and rec.grade!=&#39;NF&#39; then  earned_cred=earned_cred+(rec.c);  raise notice &#39;%&#39;,earned_cred;end if; end if; end loop; CLOSE c; if earned_cred=0  then return 0; else  sgpa=cred_point/earned_cred;  sgpa=(select ROUND(sgpa::numeric, 2)); return sgpa; end if; end;  $$ language plpgsql;&quot;;</b>
+&nbsp;            // System.out.println(query);
+<b class="fc">&nbsp;            stmt.executeUpdate(query);</b>
+<b class="fc">&nbsp;            CallableStatement cst = c.prepareCall(&quot;{call calc_sgpa(?,?,?,?)}&quot;);</b>
+<b class="fc">&nbsp;            cst.setString(1,id);</b>
+<b class="fc">&nbsp;            cst.setInt(2,yr);</b>
+<b class="fc">&nbsp;            cst.setInt(3,sm);</b>
+&nbsp;
+<b class="fc">&nbsp;            cst.registerOutParameter(4, Types.DOUBLE);</b>
+&nbsp;
+<b class="fc">&nbsp;            cst.execute();</b>
+&nbsp;
+<b class="fc">&nbsp;            Double ans= cst.getDouble(4);</b>
+<b class="fc">&nbsp;            System.out.println(ans);</b>
+<b class="fc">&nbsp;            cst.close();</b>
+<b class="fc">&nbsp;            stmt.close();</b>
+<b class="fc">&nbsp;            c.close();</b>
+&nbsp;        }
+<b class="fc">&nbsp;        catch (Exception e) {System.err.println(e.getClass().getName() + &quot;: &quot; + e.getMessage());System.exit(0);x=false;}</b>
+<b class="fc">&nbsp;        return x;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;}
+</code>
+</pre>
+</div>
+
+<script type="text/javascript">
+(function() {
+    var msie = false, msie9 = false;
+    /*@cc_on
+      msie = true;
+      @if (@_jscript_version >= 9)
+        msie9 = true;
+      @end
+    @*/
+
+    if (!msie || msie && msie9) {
+      hljs.highlightAll()
+      hljs.initLineNumbersOnLoad();
+    }
+})();
+</script>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2023-03-06 21:50</div>
+</div>
+</body>
+</html>

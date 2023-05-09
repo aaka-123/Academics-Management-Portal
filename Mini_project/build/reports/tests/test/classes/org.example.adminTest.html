@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<meta http-equiv="x-ua-compatible" content="IE=edge"/>
+<title>Test results - adminTest</title>
+<link href="../css/base-style.css" rel="stylesheet" type="text/css"/>
+<link href="../css/style.css" rel="stylesheet" type="text/css"/>
+<script src="../js/report.js" type="text/javascript"></script>
+</head>
+<body>
+<div id="content">
+<h1>adminTest</h1>
+<div class="breadcrumbs">
+<a href="../index.html">all</a> &gt; 
+<a href="../packages/org.example.html">org.example</a> &gt; adminTest</div>
+<div id="summary">
+<table>
+<tr>
+<td>
+<div class="summaryGroup">
+<table>
+<tr>
+<td>
+<div class="infoBox" id="tests">
+<div class="counter">6</div>
+<p>tests</p>
+</div>
+</td>
+<td>
+<div class="infoBox" id="failures">
+<div class="counter">0</div>
+<p>failures</p>
+</div>
+</td>
+<td>
+<div class="infoBox" id="ignored">
+<div class="counter">0</div>
+<p>ignored</p>
+</div>
+</td>
+<td>
+<div class="infoBox" id="duration">
+<div class="counter">0.787s</div>
+<p>duration</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+</td>
+<td>
+<div class="infoBox success" id="successRate">
+<div class="percent">100%</div>
+<p>successful</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div id="tabs">
+<ul class="tabLinks">
+<li>
+<a href="#tab0">Tests</a>
+</li>
+<li>
+<a href="#tab1">Standard output</a>
+</li>
+</ul>
+<div id="tab0" class="tab">
+<h2>Tests</h2>
+<table>
+<thead>
+<tr>
+<th>Test</th>
+<th>Duration</th>
+<th>Result</th>
+</tr>
+</thead>
+<tr>
+<td class="success">admin_2()</td>
+<td class="success">0.204s</td>
+<td class="success">passed</td>
+</tr>
+<tr>
+<td class="success">admin_3()</td>
+<td class="success">0.155s</td>
+<td class="success">passed</td>
+</tr>
+<tr>
+<td class="success">admin_4()</td>
+<td class="success">0.098s</td>
+<td class="success">passed</td>
+</tr>
+<tr>
+<td class="success">admin_5()</td>
+<td class="success">0.187s</td>
+<td class="success">passed</td>
+</tr>
+<tr>
+<td class="success">admin_6()</td>
+<td class="success">0.140s</td>
+<td class="success">passed</td>
+</tr>
+<tr>
+<td class="success">admin_7()</td>
+<td class="success">0.003s</td>
+<td class="success">passed</td>
+</tr>
+</table>
+</div>
+<div id="tab1" class="tab">
+<h2>Standard output</h2>
+<span class="code">
+<pre>Press 1 to see  set current year and semester: 
+Press 2 to Update course catalogue:
+Press 3 to see grades for different academic courses:
+Press 4  to see grades for a particular student:
+Press 5 to generate transcript: 
+Press 6 for graduation check: 
+Press 7 to logg out
+select name,course_id,l,t,p,c,dept,type from course_cat 
+Name                                             Course Id  L  T  P  C  Department  Type  
+Industrial Management                             HS301     3  1  0  3  CSE         PE    
+PROGRAMMING PARADIGMS AND PRAGMATICS              CS202     3  1  2  4  CSE         PC    
+COMPUTER ARCHITECTURE                             CS204     3  1  2  4  CSE         PC    
+DATABASES                                         CS301     3  1  2  4  CSE         PC    
+ANALYSIS AND DESIGN OF ALGORITHMS                 CS302     3  1  0  3  CSE         PC    
+Digital images                                    CS517     3  1  2  3  CSE         PE    
+Computer vision                                   CS535     3  1  2  3  CSE         PE    
+Machine learning                                  CS546     3  1  2  3  CSE         PE    
+Fantasy                                           HS491     3  1  2  3  CSE         E    
+professional ethics                               HS507     3  1  2  3  CSE         E    
+Capstone                                          CP301-3     0  0  0  3           PC    
+Capstone                                          CP301-2     0  0  0  3           PC    
+Capstone                                          CP301-1     0  0  0  3           PC    
+Press 1 to add a course: 
+Press 2 to delete a course: 
+Enter name of the new course: 
+Enter the course ID: 
+Enter L: 
+Enter T: 
+Enter P: 
+Enter C: 
+Enter dept: 
+Enter type: 
+insert into course_cat values('maths','MA202',2,1,3,3,'CSE','PE')
+Course MA202 has been added to course catalogue!!
+Press 1 to see  set current year and semester: 
+Press 2 to Update course catalogue:
+Press 3 to see grades for different academic courses:
+Press 4  to see grades for a particular student:
+Press 5 to generate transcript: 
+Press 6 for graduation check: 
+Press 7 to logg out
+Press 1 to see  set current year and semester: 
+Press 2 to Update course catalogue:
+Press 3 to see grades for different academic courses:
+Press 4  to see grades for a particular student:
+Press 5 to generate transcript: 
+Press 6 for graduation check: 
+Press 7 to logg out
+Offer Id  Course  year  semester  Instr_id     CGPA Required  type  
+2011       CP301-3   2023  2         2016CSI1112  0              PC    
+2005       CP301-2   2023  1         2008CSI1060  0              PC    
+2034       CS546   2023  1         2008CSI1060  0              PE    
+2009       HS507   2023  2         2016CSI1112  0              E    
+2017       CS546   2023  2         2016CSI1112  0              PE    
+2010       CP301-1   2022  2         2016CSI1112  5              PC    
+Enter Offer Id of the course for which you want to see the grades.
+Course  Student ID  Year  sem  Grade  Status         
+CS302   2020CSB1061 2023  2    NA    running   
+CS302   2020CSB1062 2023  2    NA    running   
+Press 1 to see  set current year and semester: 
+Press 2 to Update course catalogue:
+Press 3 to see grades for different academic courses:
+Press 4  to see grades for a particular student:
+Press 5 to generate transcript: 
+Press 6 for graduation check: 
+Press 7 to logg out
+Press 1 to see  set current year and semester: 
+Press 2 to Update course catalogue:
+Press 3 to see grades for different academic courses:
+Press 4  to see grades for a particular student:
+Press 5 to generate transcript: 
+Press 6 for graduation check: 
+Press 7 to logg out
+Enter User Id of the student:
+Offer ID  Course  Year  sem  grade  Credits_Earned   Status            
+2015      CP301-3   2023  2    NA      3                completed   
+2016      CP301-2   2023  1    NA      3                completed   
+2014      CP301-1   2022  2    NA      3                completed   
+2007      CS535   2022  1    A      0                completed   
+2001      CS202   2020  2    A      4                completed   
+2002      CS204   2020  2    A      4                completed   
+Press 1 to see  set current year and semester: 
+Press 2 to Update course catalogue:
+Press 3 to see grades for different academic courses:
+Press 4  to see grades for a particular student:
+Press 5 to generate transcript: 
+Press 6 for graduation check: 
+Press 7 to logg out
+Press 1 to see  set current year and semester: 
+Press 2 to Update course catalogue:
+Press 3 to see grades for different academic courses:
+Press 4  to see grades for a particular student:
+Press 5 to generate transcript: 
+Press 6 for graduation check: 
+Press 7 to logg out
+Enter student Id for which you want to generate transcript:
+No courses done by student in  year 2020and semester 1
+No courses done by student in  year 2021and semester 1
+No courses done by student in  year 2021and semester 2
+Press 1 to see  set current year and semester: 
+Press 2 to Update course catalogue:
+Press 3 to see grades for different academic courses:
+Press 4  to see grades for a particular student:
+Press 5 to generate transcript: 
+Press 6 for graduation check: 
+Press 7 to logg out
+Press 1 to see  set current year and semester: 
+Press 2 to Update course catalogue:
+Press 3 to see grades for different academic courses:
+Press 4  to see grades for a particular student:
+Press 5 to generate transcript: 
+Press 6 for graduation check: 
+Press 7 to logg out
+Enter student Id for which you want to generate transcript:
+No courses done by student in  year 2020and semester 1
+No courses done by student in  year 2021and semester 1
+No courses done by student in  year 2021and semester 2
+Press 1 to see  set current year and semester: 
+Press 2 to Update course catalogue:
+Press 3 to see grades for different academic courses:
+Press 4  to see grades for a particular student:
+Press 5 to generate transcript: 
+Press 6 for graduation check: 
+Press 7 to logg out
+Press 1 to see  set current year and semester: 
+Press 2 to Update course catalogue:
+Press 3 to see grades for different academic courses:
+Press 4  to see grades for a particular student:
+Press 5 to generate transcript: 
+Press 6 for graduation check: 
+Press 7 to logg out
+</pre>
+</span>
+</div>
+</div>
+<div id="footer">
+<p>
+<div>
+<label class="hidden" id="label-for-line-wrapping-toggle" for="line-wrapping-toggle">Wrap lines
+<input id="line-wrapping-toggle" type="checkbox" autocomplete="off"/>
+</label>
+</div>Generated by 
+<a href="http://www.gradle.org">Gradle 7.5.1</a> at 07-Mar-2023, 10:01:55 am</p>
+</div>
+</div>
+</body>
+</html>

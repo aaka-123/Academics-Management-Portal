@@ -1,0 +1,208 @@
+
+
+
+<!DOCTYPE html>
+<html id="htmlId">
+<head>
+  <title>Coverage Report > faculty</title>
+  <style type="text/css">
+    @import "../../css/coverage.css";
+    @import "../../css/idea.min.css";
+  </style>
+  <script type="text/javascript" src="../../js/highlight.min.js"></script>
+  <script type="text/javascript" src="../../js/highlightjs-line-numbers.min.js"></script>
+</head>
+
+<body>
+<div class="content">
+<div class="breadCrumbs">
+Current scope:     <a href="../../index.html">all classes</a>
+    <span class="separator">|</span>
+    <a href="../index.html">org.example</a>
+</div>
+
+<h1>Coverage Summary for Class: faculty (org.example)</h1>
+
+<table class="coverageStats">
+<tr>
+  <th class="name">Class</th>
+<th class="coverageStat 
+">
+  Class, %
+</th>
+<th class="coverageStat 
+">
+  Method, %
+</th>
+<th class="coverageStat 
+">
+  Line, %
+</th>
+</tr>
+<tr>
+  <td class="name">faculty</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/1)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/2)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/72)
+  </span>
+</td>
+</tr>
+
+</table>
+
+<br/>
+<br/>
+
+
+<pre>
+<code class="sourceCode" id="sourceCode">&nbsp;package org.example;
+&nbsp;import java.io.BufferedReader;
+&nbsp;import java.io.FileReader;
+&nbsp;import java.io.IOException;
+&nbsp;import java.sql.*;
+&nbsp;import java.util.Scanner;
+<b class="nc">&nbsp;public class faculty {</b>
+&nbsp;
+&nbsp;    static final String JDBC_DRIVER = &quot;org.postgresql.Driver&quot;;
+&nbsp;    static final String DB_URL = &quot;jdbc:postgresql://localhost:5432/aims&quot;;
+&nbsp;
+&nbsp;    static final String USER = &quot;postgres&quot;;
+&nbsp;    static final String PASS = &quot;postgres&quot;;
+&nbsp;
+&nbsp;
+&nbsp;
+<b class="nc">&nbsp;    public void f_menu(String user) throws SQLException { Connection c = null;</b>
+<b class="nc">&nbsp;        Statement stmt = null;</b>
+&nbsp;        while(true){
+<b class="nc">&nbsp;            System.out.println(&quot;Press 1 to see  your ongoing courses and grades:&quot;);</b>
+<b class="nc">&nbsp;            System.out.println(&quot;Press 2 to offer/register a course or deregister a course:&quot;);</b>
+<b class="nc">&nbsp;            System.out.println(&quot;Press 3  to see grades for different academic courses:&quot;);</b>
+<b class="nc">&nbsp;            System.out.println(&quot;Press 4  to see grades for a particular student:&quot;);</b>
+<b class="nc">&nbsp;            System.out.println(&quot;Press 5 to upload grades:&quot;);</b>
+<b class="nc">&nbsp;            System.out.println(&quot;Press 6 to logg out&quot;);</b>
+<b class="nc">&nbsp;            faculty obj =new faculty();</b>
+<b class="nc">&nbsp;            Scanner scn = new Scanner(System.in); // System.in is a standard input stream</b>
+<b class="nc">&nbsp;            int inp = scn.nextInt();</b>
+<b class="nc">&nbsp;            if(inp==1) {</b>
+<b class="nc">&nbsp;                disp_instr_courses disp_instr_courses=new disp_instr_courses();</b>
+<b class="nc">&nbsp;                disp_instr_courses.disp(user);</b>
+<b class="nc">&nbsp;                System.out.println(&quot;Enter Offer Id of the course to see grade: &quot;);</b>
+<b class="nc">&nbsp;                scn = new Scanner(System.in);</b>
+<b class="nc">&nbsp;                int ofr_id = scn.nextInt();</b>
+<b class="nc">&nbsp;fac_offr_course fac_offr_course=new fac_offr_course();</b>
+&nbsp;
+<b class="nc">&nbsp;                fac_offr_course.disp(user, ofr_id);</b>
+<b class="nc">&nbsp;            }</b>
+<b class="nc">&nbsp;            else if(inp==2)</b>
+&nbsp;            {
+<b class="nc">&nbsp;                System.out.println(&quot;Press 1 to register/offer a course:&quot;);</b>
+<b class="nc">&nbsp;                System.out.println(&quot;Press 2 to deregister a course:&quot;);</b>
+<b class="nc">&nbsp;                inp= scn.nextInt();</b>
+<b class="nc">&nbsp;                if(inp==1)</b>
+&nbsp;                {
+<b class="nc">&nbsp;                    disp_cat disp=new disp_cat();</b>
+<b class="nc">&nbsp;                    disp.disp_course_cat(1);</b>
+<b class="nc">&nbsp;                    System.out.println(&quot;Enter course ID of the course to offer:&quot;);</b>
+<b class="nc">&nbsp;                    scn=new Scanner(System.in);</b>
+<b class="nc">&nbsp;                    String inp1 = scn.nextLine();</b>
+<b class="nc">&nbsp;                    System.out.println(&quot;Enter the CGPA requirement for the course : &quot;);</b>
+<b class="nc">&nbsp;                    Float cg_req = scn.nextFloat();</b>
+<b class="nc">&nbsp;                    offer_course oc=new  offer_course();</b>
+<b class="nc">&nbsp;                    oc.offer_course(inp1,user,cg_req);</b>
+<b class="nc">&nbsp;                }</b>
+&nbsp;                else {
+<b class="nc">&nbsp;                    disp_instr_courses disp_instr_courses=new disp_instr_courses();</b>
+<b class="nc">&nbsp;                    disp_instr_courses.disp(user);</b>
+<b class="nc">&nbsp;                    System.out.println(&quot;Enter Offer Id of the course to delete: &quot;);</b>
+<b class="nc">&nbsp;                    scn = new Scanner(System.in);</b>
+<b class="nc">&nbsp;                    int ofr_id = scn.nextInt();</b>
+&nbsp;
+<b class="nc">&nbsp;                    drop_offer  drop_offer=new  drop_offer();</b>
+<b class="nc">&nbsp;                    drop_offer.drop(ofr_id);</b>
+<b class="nc">&nbsp;                }}</b>
+<b class="nc">&nbsp;            else if(inp==3){</b>
+<b class="nc">&nbsp;                disp_all_offr  disp_all_offr=new  disp_all_offr();</b>
+<b class="nc">&nbsp;                disp_all_offr.disp(1);</b>
+<b class="nc">&nbsp;                System.out.println(&quot;Enter Offer Id of the course for which you want to see the grades.&quot;);</b>
+<b class="nc">&nbsp;                Scanner sc1 = new Scanner(System.in);</b>
+<b class="nc">&nbsp;                int ofr_id = sc1.nextInt();</b>
+<b class="nc">&nbsp;                disp_adm_grade disp_adm_grade =new disp_adm_grade () ;</b>
+&nbsp;
+<b class="nc">&nbsp;                disp_adm_grade.disp(ofr_id);</b>
+<b class="nc">&nbsp;            }</b>
+<b class="nc">&nbsp;            else if(inp==4)</b>
+&nbsp;            {
+<b class="nc">&nbsp;                System.out.println(&quot;Enter User Id of the student:&quot;);</b>
+<b class="nc">&nbsp;                Scanner s=new Scanner(System.in);</b>
+<b class="nc">&nbsp;                String id= s.nextLine();</b>
+<b class="nc">&nbsp;                id=id.toUpperCase();</b>
+<b class="nc">&nbsp;                disp_stu_course disp_stu_course=new disp_stu_course();</b>
+<b class="nc">&nbsp;                disp_stu_course.dis_course(id);</b>
+<b class="nc">&nbsp;            } else if(inp==5) {</b>
+<b class="nc">&nbsp;                disp_instr_courses disp_instr_courses=new disp_instr_courses();</b>
+<b class="nc">&nbsp;                disp_instr_courses.disp(user);</b>
+<b class="nc">&nbsp;                System.out.println(&quot;Enter Offer Id of the course to enter grades: &quot;);</b>
+<b class="nc">&nbsp;                scn = new Scanner(System.in);</b>
+<b class="nc">&nbsp;                int ofr_id = scn.nextInt();</b>
+<b class="nc">&nbsp;                System.out.println(&quot;Enter Path of your .csv file: &quot;);</b>
+<b class="nc">&nbsp;                scn = new Scanner(System.in);</b>
+<b class="nc">&nbsp;                String path = scn.nextLine();</b>
+<b class="nc">&nbsp;                Upload_grades upload = new Upload_grades();</b>
+<b class="nc">&nbsp;                upload.enter_grade( ofr_id, path);</b>
+&nbsp;            }
+&nbsp;            else {break;}
+<b class="nc">&nbsp;        }</b>
+&nbsp;    }
+&nbsp;
+&nbsp;
+&nbsp;
+&nbsp;
+&nbsp;
+&nbsp;
+&nbsp;}
+</code>
+</pre>
+</div>
+
+<script type="text/javascript">
+(function() {
+    var msie = false, msie9 = false;
+    /*@cc_on
+      msie = true;
+      @if (@_jscript_version >= 9)
+        msie9 = true;
+      @end
+    @*/
+
+    if (!msie || msie && msie9) {
+      hljs.highlightAll()
+      hljs.initLineNumbersOnLoad();
+    }
+})();
+</script>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2023-03-06 20:17</div>
+</div>
+</body>
+</html>

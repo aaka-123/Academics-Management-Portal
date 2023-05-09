@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="org.example.disp_catTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2023-03-07T04:31:52" hostname="DESKTOP-HV7JIS6" time="0.065">
+  <properties/>
+  <testcase name="disp_course_cat()" classname="org.example.disp_catTest" time="0.065"/>
+  <system-out><![CDATA[select name,course_id,l,t,p,c,dept,type from course_cat 
+Name                                             Course Id  L  T  P  C  Department  Type  
+Industrial Management                             HS301     3  1  0  3  CSE         PE    
+maths                                             MA202     2  1  3  3  CSE         PE    
+PROGRAMMING PARADIGMS AND PRAGMATICS              CS202     3  1  2  4  CSE         PC    
+COMPUTER ARCHITECTURE                             CS204     3  1  2  4  CSE         PC    
+DATABASES                                         CS301     3  1  2  4  CSE         PC    
+ANALYSIS AND DESIGN OF ALGORITHMS                 CS302     3  1  0  3  CSE         PC    
+Digital images                                    CS517     3  1  2  3  CSE         PE    
+Computer vision                                   CS535     3  1  2  3  CSE         PE    
+Machine learning                                  CS546     3  1  2  3  CSE         PE    
+Fantasy                                           HS491     3  1  2  3  CSE         E    
+professional ethics                               HS507     3  1  2  3  CSE         E    
+Capstone                                          CP301-3     0  0  0  3           PC    
+Capstone                                          CP301-2     0  0  0  3           PC    
+Capstone                                          CP301-1     0  0  0  3           PC    
+]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

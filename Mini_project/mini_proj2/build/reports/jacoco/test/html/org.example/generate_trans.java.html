@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>generate_trans.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">mini_proj2</a> &gt; <a href="index.source.html" class="el_package">org.example</a> &gt; <span class="el_source">generate_trans.java</span></div><h1>generate_trans.java</h1><pre class="source lang-java linenums">package org.example;
+
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.PrintWriter;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.Statement;
+
+<span class="fc" id="L11">public class generate_trans {</span>
+    static final String JDBC_DRIVER = &quot;org.postgresql.Driver&quot;;
+    static final String DB_URL = &quot;jdbc:postgresql://localhost:5432/aims&quot;;
+
+    static final String USER = &quot;postgres&quot;;
+    static final String PASS = &quot;postgres&quot;;
+
+    public boolean generate_transcript(String id) throws IOException
+    {
+<span class="fc" id="L20">        boolean x=true;</span>
+
+<span class="fc" id="L22">        Connection c = null;</span>
+<span class="fc" id="L23">        Statement stmt = null;</span>
+<span class="fc" id="L24">        FileWriter fw=new FileWriter(&quot;C:\\Users\\Aakash\\IdeaProjects\\mini_proj\\src\\main\\java\\org\\example\\transcript.txt&quot;);</span>
+<span class="fc" id="L25">        PrintWriter bw=new PrintWriter(fw);</span>
+        try {
+<span class="fc" id="L27">            c = DriverManager.getConnection(DB_URL, USER, PASS);</span>
+<span class="fc" id="L28">            stmt = c.createStatement();</span>
+<span class="fc" id="L29">            float cg=0,sg=0,cred_reg=0,cred_earned=0;</span>
+<span class="fc" id="L30">            String adm=id.substring(0,4);</span>
+<span class="fc" id="L31">            int adm_yr=Integer.parseInt(adm);</span>
+            //   System.out.println(adm_yr);
+            //   System.exit(0);
+<span class="fc" id="L34">            int sem=2;</span>
+<span class="fc" id="L35">            String name=new String();</span>
+<span class="fc" id="L36">            String entry_no=new String();</span>
+<span class="fc" id="L37">            String q12=&quot;select name,entry_no from student where entry_no=&quot;+&quot;\'&quot;+id+&quot;\'&quot;;</span>
+            //  System.out.println(q12);
+<span class="fc" id="L39">            ResultSet rs = stmt.executeQuery(q12);</span>
+<span class="fc bfc" id="L40" title="All 2 branches covered.">            if(!rs.next()) {x=false;</span>
+<span class="fc" id="L41">                System.out.println(&quot;No student with this id&quot;) ;</span>
+            }
+
+            else{
+<span class="fc" id="L45">                name=rs.getString(1);</span>
+
+
+
+<span class="fc" id="L49">                entry_no=rs.getString(2);</span>
+            }
+
+
+            //  System.out.println(&quot;erre&quot;);
+
+<span class="fc" id="L55">            String q10=&quot;select sem from semester where status=&quot;+&quot;\'&quot;+&quot;t&quot;+&quot;\'&quot;;</span>
+<span class="fc" id="L56">            String q11=&quot;select year from semester where status=&quot;+&quot;\'&quot;+&quot;t&quot;+&quot;\'&quot;;</span>
+            //  System.out.println(q11);
+<span class="fc" id="L58">            rs= stmt.executeQuery(q11);</span>
+<span class="fc" id="L59">            rs.next();</span>
+<span class="fc" id="L60">            int curr_yr=rs.getInt(1);</span>
+
+<span class="fc" id="L62">            rs= stmt.executeQuery(q10);</span>
+<span class="fc" id="L63">            rs.next();</span>
+            //  System.out.println(q10);
+<span class="fc" id="L65">            int curr_sem=rs.getInt(1);</span>
+
+
+<span class="fc" id="L68">            bw.print(&quot;Name: &quot;+name);</span>
+<span class="fc" id="L69">            bw.println(&quot;     Entry Number: &quot;+entry_no+&quot;   &quot;);</span>
+<span class="fc" id="L70">            int dif=curr_yr-adm_yr;</span>
+<span class="fc bfc" id="L71" title="All 2 branches covered.">            for(int j=0;j&lt;=dif;j++)</span>
+            {
+<span class="pc bpc" id="L73" title="1 of 2 branches missed.">                if(adm_yr&gt;curr_yr) continue;</span>
+<span class="fc bfc" id="L74" title="All 2 branches covered.">                for(int m=1;m&lt;=2;m++)</span>
+                {
+<span class="fc" id="L76">                    sem=m;</span>
+<span class="fc bfc" id="L77" title="All 4 branches covered.">                    if(adm_yr==curr_yr &amp;&amp; m==curr_sem) continue;</span>
+<span class="fc" id="L78">                    String query = &quot;select t.course_id,ct.name,t.grade from student_transcript t,course_cat ct where t.year=&quot;+adm_yr+&quot; and t.sem=&quot;+sem+&quot; and t.stu_id='&quot;+id+&quot;\'&quot;+&quot; and t.course_id=ct.course_id&quot;;</span>
+                    // System.out.println(query);
+<span class="fc" id="L80">                    String q2=&quot;select calc_sgpa('&quot;+id+&quot;\'&quot;+&quot;,&quot;+adm_yr+&quot;,&quot;+sem+&quot;)&quot;;</span>
+<span class="fc" id="L81">                    String q3=&quot;select calc_gpa('&quot;+id+&quot;\'&quot;+&quot;)&quot;;</span>
+<span class="fc" id="L82">                    String q4=&quot;select sum(t.credits) from student_transcript t where t.year=&quot;+curr_yr+&quot; and t.sem=&quot;+sem+&quot; and t.stu_id='&quot;+id+&quot;\'&quot;;</span>
+<span class="fc" id="L83">                    String q5=&quot;select sum(ct.c) from student_transcript t,course_cat ct where t.year=&quot;+curr_yr+&quot; and t.sem=&quot;+sem+&quot; and t.stu_id='&quot;+id+&quot;\'&quot;+&quot;and t.course_id=ct.course_id&quot;;</span>
+<span class="fc" id="L84">                    rs = stmt.executeQuery(q2);</span>
+<span class="fc" id="L85">                    rs.next();</span>
+<span class="fc" id="L86">                    sg=rs.getFloat(1);</span>
+
+<span class="fc" id="L88">                    rs =  stmt.executeQuery(q3);</span>
+<span class="fc" id="L89">                    rs.next();</span>
+<span class="fc" id="L90">                    cg=rs.getFloat(1);</span>
+
+<span class="fc" id="L92">                    rs =  stmt.executeQuery(q4);</span>
+<span class="fc" id="L93">                    rs.next();</span>
+<span class="fc" id="L94">                    cred_earned=rs.getFloat(1);</span>
+
+<span class="fc" id="L96">                    rs = stmt.executeQuery(q5);</span>
+<span class="fc" id="L97">                    rs.next();</span>
+<span class="fc" id="L98">                    cred_reg=rs.getFloat(1);</span>
+<span class="fc" id="L99">                    rs=  stmt.executeQuery(query);</span>
+
+<span class="fc bfc" id="L101" title="All 2 branches covered.">                    if(!rs.next() )</span>
+                    {
+<span class="fc" id="L103">                        System.out.println(&quot;No courses done by student in  year &quot;+adm_yr+&quot;and &quot;+&quot;semester &quot;+sem);</span>
+                    }
+                    else {
+
+<span class="fc" id="L107">                        bw.print(&quot;Session: &quot;+adm_yr+&quot;-&quot;+sem);</span>
+<span class="fc" id="L108">                        bw.print(&quot;     SGPA: &quot;+sg);</span>
+<span class="fc" id="L109">                        bw.print(&quot;     Credits Registered: &quot;+cred_reg);</span>
+<span class="fc" id="L110">                        bw.print(&quot;     Credits Earned: &quot;+cred_earned);</span>
+<span class="fc" id="L111">                        bw.print(&quot;      CGPA: &quot;+cg);</span>
+<span class="fc" id="L112">                        bw.print(&quot;\n&quot;);</span>
+<span class="fc" id="L113">                        bw.print(&quot;Course Id&quot;+&quot;  &quot;);</span>
+<span class="fc" id="L114">                        bw.print(&quot;Course Name&quot;+&quot;                             &quot;);</span>
+<span class="fc" id="L115">                        bw.print(&quot;Grade&quot;+&quot;  &quot;);</span>
+<span class="fc" id="L116">                        bw.print(&quot;\n&quot;);</span>
+<span class="fc" id="L117">                        bw.print(rs.getString(1)+&quot;      &quot;);</span>
+<span class="fc" id="L118">                        String p=rs.getString(2);</span>
+<span class="fc" id="L119">                        String s=&quot;&quot;;</span>
+<span class="fc" id="L120">                        bw.print(p);</span>
+<span class="fc bfc" id="L121" title="All 2 branches covered.">                        for(int o=0;o&lt;40-p.length();o++)</span>
+                        {
+<span class="fc" id="L123">                            bw.print(&quot; &quot;);</span>
+                        }
+<span class="fc" id="L125">                        bw.print(rs.getString(3)+&quot;     &quot;);</span>
+<span class="fc" id="L126">                        bw.println(&quot;\n&quot;);</span>
+<span class="fc bfc" id="L127" title="All 2 branches covered.">                        while(rs.next())</span>
+<span class="fc" id="L128">                        {  bw.print(rs.getString(1)+&quot;      &quot;);</span>
+<span class="fc" id="L129">                            p=rs.getString(2);</span>
+<span class="fc" id="L130">                            s=&quot;&quot;;</span>
+<span class="fc" id="L131">                            bw.print(p);</span>
+<span class="fc bfc" id="L132" title="All 2 branches covered.">                            for(int n=0;n&lt;40-p.length();n++)</span>
+                            {
+<span class="fc" id="L134">                                bw.print(&quot; &quot;);</span>
+                            }
+<span class="fc" id="L136">                            bw.print(rs.getString(3)+&quot;     &quot;);</span>
+<span class="fc" id="L137">                            bw.print(&quot;\n&quot;);</span>
+                        }}}
+<span class="pc bpc" id="L139" title="1 of 2 branches missed.">                if(sem==2) adm_yr++;</span>
+<span class="fc" id="L140">                bw.print(&quot; \n &quot;);</span>
+<span class="fc" id="L141">                bw.print(&quot;  \n    &quot;);</span>
+            }
+<span class="fc" id="L143">            stmt.close();</span>
+<span class="fc" id="L144">            c.close();</span>
+<span class="fc" id="L145">            rs.close();</span>
+        }
+<span class="pc" id="L147">        catch (Exception e) {x=false;System.err.println(e.getClass().getName() + &quot;: &quot; + e.getMessage());System.exit(0);}</span>
+<span class="fc" id="L148">        bw.close();</span>
+<span class="fc" id="L149">        return x;</span>
+    }
+
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.8.202204050719</span></div></body></html>

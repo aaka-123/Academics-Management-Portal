@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>CGPA.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">mini_proj2</a> &gt; <a href="index.source.html" class="el_package">org.example</a> &gt; <span class="el_source">CGPA.java</span></div><h1>CGPA.java</h1><pre class="source lang-java linenums">package org.example;
+
+import java.sql.*;
+import java.io.*;
+
+import java.util.Scanner;
+import java.sql.*;
+
+<span class="fc" id="L9">public class CGPA {</span>
+
+    static final String JDBC_DRIVER = &quot;org.postgresql.Driver&quot;;
+    static final String DB_URL = &quot;jdbc:postgresql://localhost:5432/aims&quot;;
+
+    static final String USER = &quot;postgres&quot;;
+    static final String PASS = &quot;postgres&quot;;
+
+    public  boolean calc_gpa(String id) {
+<span class="fc" id="L18">    boolean x=true;</span>
+<span class="fc" id="L19">        Connection c = null;</span>
+<span class="fc" id="L20">        Statement stmt = null;</span>
+        try {
+<span class="fc" id="L22">            c = DriverManager.getConnection(DB_URL, USER, PASS);</span>
+<span class="fc" id="L23">            stmt = c.createStatement();</span>
+<span class="fc" id="L24">            String query = &quot; CREATE OR REPLACE FUNCTION calc_gpa( id varchar) RETURNS float AS $$  DECLARE pre_req text[];  cred_point float; earned_cred float; cgpa float; rec record;  c CURSOR (key text) FOR (select t.grade ,ct.c,t.credits from student_transcript t,course_cat ct where t.stu_id=key and ct.course_id=t.course_id);  BEGIN  cred_point=0; earned_cred=0; OPEN c(id);  Loop FETCH FROM c INTO rec;  if not found then exit ; else  if rec.grade='A' then cred_point=cred_point+(10*(rec.c)); elseif rec.grade='A-' then cred_point=cred_point+(9*(rec.c)); elseif rec.grade='B' then cred_point=cred_point+(8*(rec.c)); elseif rec.grade='B-' then cred_point=cred_point+(7*(rec.c)); elseif rec.grade='C' then cred_point=cred_point+(6*(rec.c)); elseif rec.grade='C-' then cred_point=cred_point+(5*(rec.c)); elseif rec.grade='D' then cred_point=cred_point+(4*(rec.c)); elseif rec.grade='D-' then cred_point=cred_point+(3*(rec.c)); end if;end if; end loop;  CLOSE c; OPEN c(id);  Loop FETCH FROM c INTO rec;  if not found then exit ; else  if rec.grade!='Z' and  rec.grade!='S' and  rec.grade!='NP' and rec.grade!='NF' then  earned_cred=earned_cred+(rec.credits); end if; end if; end loop; CLOSE c; if earned_cred=0  then return 0; else  cgpa=cred_point/earned_cred; cgpa=(select ROUND(cgpa::numeric, 2)); return cgpa; end if; end;  $$ language plpgsql;&quot;;</span>
+            // System.out.println(query);
+<span class="fc" id="L26">            stmt.executeUpdate(query);</span>
+
+<span class="fc" id="L28">            CallableStatement cst = c.prepareCall(&quot;{call calc_gpa(?,?)}&quot;);</span>
+
+<span class="fc" id="L30">            cst.setString(1,id);</span>
+
+<span class="fc" id="L32">            cst.registerOutParameter(2, Types.FLOAT);</span>
+
+<span class="fc" id="L34">            cst.execute();</span>
+<span class="fc" id="L35">            System.out.println(&quot;Function executed successfully&quot;);</span>
+<span class="fc" id="L36">            double ans= cst.getDouble(2);</span>
+<span class="fc" id="L37">            System.out.println(ans);</span>
+            // System.out.println(pnr);
+<span class="fc" id="L39">            cst.close();</span>
+<span class="fc" id="L40">            stmt.close();</span>
+<span class="fc" id="L41">            c.close();</span>
+
+        }
+<span class="pc" id="L44">        catch (Exception e) {x=false;System.err.println(e.getClass().getName() + &quot;: &quot; + e.getMessage());System.exit(0);}</span>
+<span class="fc" id="L45">return x;</span>
+    }
+
+    public boolean calc_sgpa(String id,int yr,int sm) {
+<span class="fc" id="L49">        Connection c = null;</span>
+<span class="fc" id="L50">        Statement stmt = null;</span>
+<span class="fc" id="L51">        boolean x=true;</span>
+        try {
+<span class="fc" id="L53">            c = DriverManager.getConnection(DB_URL, USER, PASS);</span>
+<span class="fc" id="L54">            stmt = c.createStatement();</span>
+<span class="fc" id="L55">            String query = &quot;  CREATE OR REPLACE FUNCTION calc_sgpa( id varchar,yr int,sm int) RETURNS float AS $$  DECLARE pre_req text[];   cred_point float; earned_cred float; sgpa float; rec record;c CURSOR (key text,semm int,yrr int) FOR (select t.grade ,ct.c,t.credits from student_transcript t,course_cat ct where t.stu_id=key and ct.course_id=t.course_id and t.year=yrr and t.sem=semm);  BEGIN  cred_point=0; earned_cred=0; OPEN c(id,sm,yr);  Loop FETCH FROM c INTO rec;  if not found then exit ; else  if rec.grade='A' then cred_point=cred_point+(10*(rec.c));  elseif rec.grade='A-' then cred_point=cred_point+(9*(rec.c));  elseif rec.grade='B' then cred_point=cred_point+(8*(rec.c)); elseif rec.grade='B-' then cred_point=cred_point+(7*(rec.c));  elseif rec.grade='C' then cred_point=cred_point+(6*(rec.c)); elseif rec.grade='C-' then cred_point=cred_point+(5*(rec.c));  elseif rec.grade='D' then cred_point=cred_point+(4*(rec.c)); elseif rec.grade='D-' then cred_point=cred_point+(3*(rec.c)); elseif rec.grade='E' then cred_point=cred_point+(2*(rec.c));  end if;end if; end loop;  CLOSE c; OPEN c(id,sm,yr);  Loop FETCH FROM c INTO rec;  if not found then exit ;  else  if rec.grade!='Z' and  rec.grade!='S' and  rec.grade!='NP' and rec.grade!='NF' then  earned_cred=earned_cred+(rec.c);  raise notice '%',earned_cred;end if; end if; end loop; CLOSE c; if earned_cred=0  then return 0; else  sgpa=cred_point/earned_cred;  sgpa=(select ROUND(sgpa::numeric, 2)); return sgpa; end if; end;  $$ language plpgsql;&quot;;</span>
+            // System.out.println(query);
+<span class="fc" id="L57">            stmt.executeUpdate(query);</span>
+<span class="fc" id="L58">            CallableStatement cst = c.prepareCall(&quot;{call calc_sgpa(?,?,?,?)}&quot;);</span>
+<span class="fc" id="L59">            cst.setString(1,id);</span>
+<span class="fc" id="L60">            cst.setInt(2,yr);</span>
+<span class="fc" id="L61">            cst.setInt(3,sm);</span>
+
+<span class="fc" id="L63">            cst.registerOutParameter(4, Types.DOUBLE);</span>
+
+<span class="fc" id="L65">            cst.execute();</span>
+
+<span class="fc" id="L67">            Double ans= cst.getDouble(4);</span>
+<span class="fc" id="L68">            System.out.println(ans);</span>
+<span class="fc" id="L69">            cst.close();</span>
+<span class="fc" id="L70">            stmt.close();</span>
+<span class="fc" id="L71">            c.close();</span>
+        }
+<span class="pc" id="L73">        catch (Exception e) {System.err.println(e.getClass().getName() + &quot;: &quot; + e.getMessage());System.exit(0);x=false;}</span>
+<span class="fc" id="L74">        return x;</span>
+    }
+
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.8.202204050719</span></div></body></html>

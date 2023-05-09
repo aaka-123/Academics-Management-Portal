@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>admin.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">mini_proj2</a> &gt; <a href="index.source.html" class="el_package">org.example</a> &gt; <span class="el_source">admin.java</span></div><h1>admin.java</h1><pre class="source lang-java linenums">package org.example;
+
+import java.sql.*;
+
+import java.io.FileWriter;
+import java.io.IOException;
+
+
+
+import java.io.*;
+
+import java.util.Scanner;
+<span class="fc" id="L13">public class admin {</span>
+
+
+    static final String JDBC_DRIVER = &quot;org.postgresql.Driver&quot;;
+    static final String DB_URL = &quot;jdbc:postgresql://localhost:5432/aims&quot;;
+
+    static final String USER = &quot;postgres&quot;;
+    static final String PASS = &quot;postgres&quot;;
+
+
+    public boolean a_menu(String user) throws SQLException, IOException {
+<span class="fc" id="L24">        Connection c = null;</span>
+<span class="fc" id="L25">        Statement stmt = null;</span>
+<span class="fc" id="L26">        boolean x=true;</span>
+<span class="fc" id="L27">        BufferedReader reader=new BufferedReader(new InputStreamReader(System.in));</span>
+        while (true) {
+<span class="fc" id="L29">            System.out.println(&quot;Press 1 to see  set current year and semester: &quot;);</span>
+<span class="fc" id="L30">            System.out.println(&quot;Press 2 to Update course catalogue:&quot;);</span>
+<span class="fc" id="L31">            System.out.println(&quot;Press 3 to see grades for different academic courses:&quot;);</span>
+<span class="fc" id="L32">            System.out.println(&quot;Press 4  to see grades for a particular student:&quot;);</span>
+<span class="fc" id="L33">            System.out.println(&quot;Press 5 to generate transcript: &quot;);</span>
+<span class="fc" id="L34">            System.out.println(&quot;Press 6 for graduation check: &quot;);</span>
+<span class="fc" id="L35">            System.out.println(&quot;Press 7 to logg out&quot;);</span>
+            // System.in is a standard input stream
+<span class="fc" id="L37">            int inp = Integer.parseInt(reader.readLine());</span>
+<span class="fc" id="L38">            admin admin = new admin();</span>
+<span class="pc bpc" id="L39" title="1 of 2 branches missed.">            if (inp == 1) {</span>
+<span class="nc" id="L40">                System.out.println(&quot;Enter current year: &quot;);int year = Integer.parseInt(reader.readLine());</span>
+<span class="nc" id="L41">                System.out.println(&quot;Enter current sem (1 or 2): &quot;); // System.in is a standard input stream</span>
+<span class="nc" id="L42">                int sem =Integer.parseInt(reader.readLine());set_sem_yr set_sem_yr = new set_sem_yr();</span>
+<span class="nc" id="L43">                set_sem_yr.set(sem, year);</span>
+<span class="pc bfc" id="L44" title="All 2 branches covered.">            } else if (inp == 2) {</span>
+<span class="fc" id="L45">                disp_cat disp = new disp_cat();disp.disp_course_cat(1);</span>
+<span class="fc" id="L46">                System.out.println(&quot;Press 1 to add a course: &quot;);System.out.println(&quot;Press 2 to delete a course: &quot;);</span>
+<span class="fc" id="L47">                int inp1 = Integer.parseInt(reader.readLine());</span>
+<span class="pc bpc" id="L48" title="1 of 2 branches missed.">                if (inp1 == 1) {int l=0;</span>
+<span class="fc" id="L49">                    System.out.println(&quot;Enter name of the new course: &quot;);String name =reader.readLine() ;</span>
+<span class="fc" id="L50">                    System.out.println(&quot;Enter the course ID: &quot;);String id = reader.readLine();System.out.println(&quot;Enter L: &quot;);</span>
+
+<span class="fc" id="L52">                     l = Integer.parseInt(reader.readLine());System.out.println(&quot;Enter T: &quot;);</span>
+<span class="fc" id="L53">                    int t = Integer.parseInt(reader.readLine());System.out.println(&quot;Enter P: &quot;);</span>
+<span class="fc" id="L54">                    int p = Integer.parseInt(reader.readLine());System.out.println(&quot;Enter C: &quot;);</span>
+<span class="fc" id="L55">                    int cr = Integer.parseInt(reader.readLine());System.out.println(&quot;Enter dept: &quot;);</span>
+<span class="fc" id="L56">                    String dept = reader.readLine();</span>
+<span class="fc" id="L57">                    System.out.println(&quot;Enter type: &quot;);String type = reader.readLine();edit_cat edit = new edit_cat();</span>
+<span class="fc" id="L58">                    edit.add_to_cat(name, id, l, t, p, cr, dept, type);</span>
+<span class="fc" id="L59">                } else {</span>
+<span class="nc" id="L60">                    System.out.println(&quot;Enter the course ID of the course to delete :&quot;);String id = reader.readLine();edit_cat edit = new edit_cat();edit.cat_delete(id);</span>
+                }
+<span class="fc bfc" id="L62" title="All 2 branches covered.">            } else if (inp == 3) {</span>
+<span class="fc" id="L63">                disp_all_offr disp_all_offr = new disp_all_offr();disp_all_offr.disp(1);</span>
+<span class="fc" id="L64">                System.out.println(&quot;Enter Offer Id of the course for which you want to see the grades.&quot;);</span>
+<span class="fc" id="L65">                int ofr_id = Integer.parseInt(reader.readLine());disp_adm_grade disp_adm_grade =new disp_adm_grade () ;</span>
+<span class="fc" id="L66">                disp_adm_grade.disp(ofr_id);</span>
+<span class="fc bfc" id="L67" title="All 2 branches covered.">            } else if (inp == 4) {</span>
+<span class="fc" id="L68">                System.out.println(&quot;Enter User Id of the student:&quot;); String id =reader.readLine();</span>
+<span class="fc" id="L69">                id = id.toUpperCase();disp_stu_course disp_stu_course = new disp_stu_course();disp_stu_course.dis_course(id);</span>
+<span class="fc bfc" id="L70" title="All 2 branches covered.">            } else if (inp == 5) {</span>
+<span class="fc" id="L71">                System.out.println(&quot;Enter student Id for which you want to generate transcript:&quot;); String id = reader.readLine();</span>
+<span class="fc" id="L72">                id = id.toUpperCase();generate_trans ob = new generate_trans();ob.generate_transcript(id);</span>
+<span class="pc bpc" id="L73" title="1 of 2 branches missed.">            } else if (inp == 6) {</span>
+<span class="nc" id="L74">                System.out.println(&quot;Enter student Id for which you want to do grad check:&quot;); String id = reader.readLine();</span>
+<span class="nc" id="L75">                id = id.toUpperCase();grad_check gd = new grad_check();gd.grad_check(id);</span>
+            }else {
+                break;
+            }
+<span class="fc" id="L79">        }</span>
+<span class="fc" id="L80">        return x;</span>
+
+    }
+}
+
+
+
+
+
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.8.202204050719</span></div></body></html>

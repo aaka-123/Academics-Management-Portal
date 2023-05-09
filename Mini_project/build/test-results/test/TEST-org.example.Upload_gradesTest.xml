@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="org.example.Upload_gradesTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2023-03-07T04:31:50" hostname="DESKTOP-HV7JIS6" time="0.137">
+  <properties/>
+  <testcase name="enter_grade()" classname="org.example.Upload_gradesTest" time="0.137"/>
+  <system-out><![CDATA[Grades entered for user  2020CSB1060
+Grades entered for user  2020CSB1061
+Student 2020CSB1107 does not exist.
+Student 2020CSB1132 does not exist.
+Student 2020CSB1123 does not exist.
+]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

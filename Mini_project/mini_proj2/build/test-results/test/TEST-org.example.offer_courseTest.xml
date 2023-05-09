@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="org.example.offer_courseTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2023-03-07T04:31:54" hostname="DESKTOP-HV7JIS6" time="0.08">
+  <properties/>
+  <testcase name="offer_course()" classname="org.example.offer_courseTest" time="0.08"/>
+  <system-out><![CDATA[The course HS491 is now being offered by you in this sem!!!
+]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

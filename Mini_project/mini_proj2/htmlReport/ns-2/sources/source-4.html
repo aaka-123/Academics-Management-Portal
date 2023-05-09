@@ -1,0 +1,179 @@
+
+
+
+<!DOCTYPE html>
+<html id="htmlId">
+<head>
+  <title>Coverage Report > admin</title>
+  <style type="text/css">
+    @import "../../css/coverage.css";
+    @import "../../css/idea.min.css";
+  </style>
+  <script type="text/javascript" src="../../js/highlight.min.js"></script>
+  <script type="text/javascript" src="../../js/highlightjs-line-numbers.min.js"></script>
+</head>
+
+<body>
+<div class="content">
+<div class="breadCrumbs">
+Current scope:     <a href="../../index.html">all classes</a>
+    <span class="separator">|</span>
+    <a href="../index.html">org.example</a>
+</div>
+
+<h1>Coverage Summary for Class: admin (org.example)</h1>
+
+<table class="coverageStats">
+<tr>
+  <th class="name">Class</th>
+<th class="coverageStat 
+">
+  Class, %
+</th>
+<th class="coverageStat 
+">
+  Method, %
+</th>
+<th class="coverageStat 
+">
+  Line, %
+</th>
+</tr>
+<tr>
+  <td class="name">admin</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/1)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/2)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/41)
+  </span>
+</td>
+</tr>
+
+</table>
+
+<br/>
+<br/>
+
+
+<pre>
+<code class="sourceCode" id="sourceCode">&nbsp;package org.example;
+&nbsp;
+&nbsp;import java.sql.*;
+&nbsp;
+&nbsp;import java.io.FileWriter;
+&nbsp;import java.io.IOException;
+&nbsp;
+&nbsp;
+&nbsp;
+&nbsp;import java.io.*;
+&nbsp;
+&nbsp;import java.util.Scanner;
+<b class="nc">&nbsp;public class admin {</b>
+&nbsp;
+&nbsp;
+&nbsp;    static final String JDBC_DRIVER = &quot;org.postgresql.Driver&quot;;
+&nbsp;    static final String DB_URL = &quot;jdbc:postgresql://localhost:5432/aims&quot;;
+&nbsp;
+&nbsp;    static final String USER = &quot;postgres&quot;;
+&nbsp;    static final String PASS = &quot;postgres&quot;;
+&nbsp;
+&nbsp;
+&nbsp;    public void a_menu(String user) throws SQLException, IOException {
+<b class="nc">&nbsp;        Connection c = null;</b>
+<b class="nc">&nbsp;        Statement stmt = null;</b>
+&nbsp;        while (true) {
+<b class="nc">&nbsp;            System.out.println(&quot;Press 1 to see  set current year and semester: &quot;);</b>
+<b class="nc">&nbsp;            System.out.println(&quot;Press 2 to Update course catalogue:&quot;);</b>
+<b class="nc">&nbsp;            System.out.println(&quot;Press 3 to see grades for different academic courses:&quot;);</b>
+<b class="nc">&nbsp;            System.out.println(&quot;Press 4  to see grades for a particular student:&quot;);</b>
+<b class="nc">&nbsp;            System.out.println(&quot;Press 5 to generate transcript: &quot;);</b>
+<b class="nc">&nbsp;            System.out.println(&quot;Press 6 for graduation check: &quot;);</b>
+<b class="nc">&nbsp;            System.out.println(&quot;Press 7 to logg out&quot;);</b>
+<b class="nc">&nbsp;            Scanner scn3 = new Scanner(System.in); // System.in is a standard input stream</b>
+<b class="nc">&nbsp;            int inp = scn3.nextInt();</b>
+<b class="nc">&nbsp;            admin admin = new admin();</b>
+<b class="nc">&nbsp;            if (inp == 1) {</b>
+<b class="nc">&nbsp;                System.out.println(&quot;Enter current year: &quot;);Scanner scn5 = new Scanner(System.in);int year = scn5.nextInt();</b>
+<b class="nc">&nbsp;                System.out.println(&quot;Enter current sem (1 or 2): &quot;);Scanner scn4 = new Scanner(System.in); // System.in is a standard input stream</b>
+<b class="nc">&nbsp;                int sem = scn4.nextInt();set_sem_yr set_sem_yr = new set_sem_yr();set_sem_yr.set(sem, year);</b>
+<b class="nc">&nbsp;            } else if (inp == 2) {</b>
+<b class="nc">&nbsp;                disp_cat disp = new disp_cat();disp.disp_course_cat(1);</b>
+<b class="nc">&nbsp;                System.out.println(&quot;Press 1 to add a course: &quot;);System.out.println(&quot;Press 2 to delete a course: &quot;);Scanner scn4 = new Scanner(System.in);</b>
+<b class="nc">&nbsp;                int inp1 = scn4.nextInt();</b>
+<b class="nc">&nbsp;                if (inp1 == 1) {</b>
+<b class="nc">&nbsp;                    System.out.println(&quot;Enter name of the new course: &quot;);Scanner scn5 = new Scanner(System.in);String name = scn5.nextLine();</b>
+<b class="nc">&nbsp;                    System.out.println(&quot;Enter the course ID: &quot;);String id = scn5.nextLine();System.out.println(&quot;Enter L: &quot;);</b>
+<b class="nc">&nbsp;                    int l = scn5.nextInt();System.out.println(&quot;Enter T: &quot;);int t = scn5.nextInt();System.out.println(&quot;Enter P: &quot;);int p = scn5.nextInt();System.out.println(&quot;Enter C: &quot;);int cr = scn5.nextInt();System.out.println(&quot;Enter dept: &quot;);String dept = scn5.nextLine();</b>
+<b class="nc">&nbsp;                    Scanner sc = new Scanner(System.in);System.out.println(&quot;Enter type: &quot;);String type = sc.nextLine();edit_cat edit = new edit_cat();edit.add_to_cat(name, id, l, t, p, cr, dept, type);</b>
+<b class="nc">&nbsp;                } else {</b>
+<b class="nc">&nbsp;                    System.out.println(&quot;Enter the course ID of the course to delete :&quot;);Scanner scn5 = new Scanner(System.in);String id = scn5.nextLine();edit_cat edit = new edit_cat();edit.cat_delete(id);</b>
+&nbsp;                }
+<b class="nc">&nbsp;            } else if (inp == 3) {</b>
+<b class="nc">&nbsp;                disp_all_offr disp_all_offr = new disp_all_offr();disp_all_offr.disp(1);System.out.println(&quot;Enter Offer Id of the course for which you want to see the grades.&quot;);Scanner sc1 = new Scanner(System.in);int ofr_id = sc1.nextInt();disp_adm_grade disp_adm_grade =new disp_adm_grade () ;</b>
+<b class="nc">&nbsp;                disp_adm_grade.disp(ofr_id);</b>
+<b class="nc">&nbsp;            } else if (inp == 4) {</b>
+<b class="nc">&nbsp;                System.out.println(&quot;Enter User Id of the student:&quot;);Scanner scn4 = new Scanner(System.in); String id = scn4.nextLine();</b>
+<b class="nc">&nbsp;                id = id.toUpperCase();disp_stu_course disp_stu_course = new disp_stu_course();disp_stu_course.dis_course(id);</b>
+<b class="nc">&nbsp;            } else if (inp == 5) {</b>
+<b class="nc">&nbsp;                System.out.println(&quot;Enter student Id for which you want to generate transcript:&quot;);Scanner scn4 = new Scanner(System.in); String id = scn4.nextLine();</b>
+<b class="nc">&nbsp;                id = id.toUpperCase();generate_trans ob = new generate_trans();ob.generate_transcript(id);</b>
+<b class="nc">&nbsp;            } else if (inp == 6) {</b>
+<b class="nc">&nbsp;                System.out.println(&quot;Enter student Id for which you want to do grad check:&quot;);Scanner scn4 = new Scanner(System.in); String id = scn4.nextLine();</b>
+<b class="nc">&nbsp;                id = id.toUpperCase();grad_check gd = new grad_check();gd.grad_check(id);</b>
+&nbsp;            }else {
+&nbsp;                break;
+&nbsp;            }
+<b class="nc">&nbsp;        }</b>
+&nbsp;
+&nbsp;    }
+&nbsp;}
+&nbsp;
+&nbsp;
+&nbsp;
+&nbsp;
+&nbsp;
+</code>
+</pre>
+</div>
+
+<script type="text/javascript">
+(function() {
+    var msie = false, msie9 = false;
+    /*@cc_on
+      msie = true;
+      @if (@_jscript_version >= 9)
+        msie9 = true;
+      @end
+    @*/
+
+    if (!msie || msie && msie9) {
+      hljs.highlightAll()
+      hljs.initLineNumbersOnLoad();
+    }
+})();
+</script>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2023-03-06 21:50</div>
+</div>
+</body>
+</html>

@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>Main.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">mini_proj2</a> &gt; <a href="index.source.html" class="el_package">org.example</a> &gt; <span class="el_source">Main.java</span></div><h1>Main.java</h1><pre class="source lang-java linenums">package org.example;
+import java.io.*;
+
+import java.util.Scanner;
+import java.sql.*;
+
+<span class="fc" id="L7">public class Main {</span>
+    static final String JDBC_DRIVER = &quot;org.postgresql.Driver&quot;;
+    static final String DB_URL = &quot;jdbc:postgresql://localhost:5432/aims&quot;;
+
+    static final String USER = &quot;postgres&quot;;
+    static final String PASS = &quot;postgres&quot;;
+
+
+    //////////////////////////////////////////////////////////////////
+
+    // Main driver method
+    public static boolean main(String[] args) throws IOException, SQLException {
+<span class="fc" id="L19">        boolean x=true;</span>
+<span class="fc" id="L20">        BufferedReader reader=new BufferedReader(new InputStreamReader(System.in));</span>
+<span class="fc" id="L21">        Connection c = null;</span>
+<span class="fc" id="L22">        Statement stmt = null;</span>
+<span class="fc" id="L23">        while(true) {System.out.println(&quot;Press 1 to login and 2 to exit!!&quot;);</span>
+
+<span class="fc bfc" id="L25" title="All 2 branches covered.">            int a=Integer.parseInt(reader.readLine());if(a==2) break;</span>
+<span class="fc" id="L26">            else {System.out.println(&quot;                   Welcome to aims portal!!!!&quot;);</span>
+<span class="fc" id="L27">                System.out.println(&quot;Enter User Name: &quot;);</span>
+
+<span class="fc" id="L29">                String user = reader.readLine();</span>
+<span class="fc" id="L30">                user = user.toUpperCase();</span>
+<span class="fc" id="L31">                System.out.println(&quot;Enter Password: &quot;);</span>
+<span class="fc" id="L32">                String pswd = reader.readLine();</span>
+<span class="fc" id="L33">                pswd = pswd.toLowerCase();</span>
+<span class="fc" id="L34">                String cnt = &quot;select count(*) from auth where user_name=&quot; + &quot;\'&quot; + user + &quot;\'&quot;;</span>
+<span class="fc" id="L35">                String uname = &quot;select role from auth where user_name=&quot; + &quot;\'&quot; + user + &quot;\'&quot;;</span>
+<span class="fc" id="L36">                String pwd = &quot;select pswd from auth where user_name=&quot; + &quot;\'&quot; + user + &quot;\'&quot;;</span>
+<span class="fc" id="L37">                int reg = 0;try {c = DriverManager.getConnection(DB_URL, USER, PASS);</span>
+<span class="fc" id="L38">                    stmt = c.createStatement();ResultSet rs = stmt.executeQuery(cnt);</span>
+<span class="fc" id="L39">                    rs.next();reg = rs.getInt(1);stmt.close();c.close();</span>
+<span class="fc" id="L40">                    rs.close();}</span>
+<span class="pc" id="L41">                catch (Exception e) {System.err.println(e.getClass().getName() + &quot;: &quot; + e.getMessage());System.exit(0);}</span>
+<span class="pc bpc" id="L42" title="1 of 2 branches missed.">                if (reg == 0) {System.out.println(&quot;User is not registered!!!&quot;);}</span>
+                else {
+                    try
+                    {
+<span class="fc" id="L46">                        c = DriverManager.getConnection(DB_URL, USER, PASS);</span>
+<span class="fc" id="L47">                        stmt = c.createStatement();</span>
+<span class="fc" id="L48">                        ResultSet rs = stmt.executeQuery(pwd);</span>
+<span class="fc" id="L49">                        rs.next();</span>
+<span class="fc" id="L50">                        pwd = rs.getString(1);stmt.close();</span>
+<span class="fc" id="L51">                        c.close();rs.close();}</span>
+<span class="pc" id="L52">                    catch (Exception e) {System.err.println(e.getClass().getName() + &quot;: &quot; + e.getMessage());System.exit(0);}</span>
+<span class="pc bpc" id="L53" title="1 of 2 branches missed.">                    if (pwd.equals(pswd)) {</span>
+<span class="nc" id="L54">                        try {c = DriverManager.getConnection(DB_URL, USER, PASS);</span>
+<span class="nc" id="L55">                            stmt = c.createStatement();</span>
+<span class="nc" id="L56">                            ResultSet rs = stmt.executeQuery(uname);</span>
+<span class="nc" id="L57">                            rs.next();uname = rs.getString(1);</span>
+<span class="nc" id="L58">                            stmt.close();c.close();rs.close();}</span>
+<span class="nc" id="L59">                        catch (Exception e) {System.err.println(e.getClass().getName() + &quot;: &quot; + e.getMessage());</span>
+<span class="nc" id="L60">                            System.exit(0);}</span>
+<span class="nc bnc" id="L61" title="All 2 branches missed.">                        if (uname.equals(&quot;student&quot;)) {student student=new student();student.s_menu(user);}</span>
+<span class="nc bnc" id="L62" title="All 2 branches missed.">                        else if (uname.equals(&quot;faculty&quot;)) {faculty faculty=new faculty();faculty.f_menu(user);}</span>
+<span class="pc" id="L63">                        else {admin admin=new admin();admin.a_menu(user);}}else {System.out.println(&quot;Wrong Password&quot;);</span>
+<span class="fc" id="L64">                        break;</span>
+<span class="nc" id="L65">               }}}}</span>
+
+
+<span class="fc" id="L68">return x;</span>
+    }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.8.202204050719</span></div></body></html>

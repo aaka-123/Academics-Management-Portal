@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>grad_check.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">mini_proj2</a> &gt; <a href="index.source.html" class="el_package">org.example</a> &gt; <span class="el_source">grad_check.java</span></div><h1>grad_check.java</h1><pre class="source lang-java linenums">package org.example;
+
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.Statement;
+import java.util.Scanner;
+
+<span class="fc" id="L9">public class grad_check {</span>
+    static final String JDBC_DRIVER = &quot;org.postgresql.Driver&quot;;
+    static final String DB_URL = &quot;jdbc:postgresql://localhost:5432/aims&quot;;
+
+    static final String USER = &quot;postgres&quot;;
+    static final String PASS = &quot;postgres&quot;;
+    public boolean grad_check(String id)
+
+<span class="fc" id="L17">    {id=id.toUpperCase();</span>
+<span class="fc" id="L18">        boolean x=true;</span>
+<span class="fc" id="L19">        Connection c = null;</span>
+<span class="fc" id="L20">        Statement stmt = null;</span>
+        try {
+<span class="fc" id="L22">            c = DriverManager.getConnection(DB_URL, USER, PASS);</span>
+<span class="fc" id="L23">            stmt = c.createStatement();</span>
+//            select sum(credits) from student_transcript where stu_id='2020CSB1060' and type='PC' and course_id!='CP301-1' and course_id!='CP301-2'and course_id!='CP301-3' and status='completed
+<span class="fc" id="L25">            String query=&quot;select sum(credits) from student_transcript where (course_id=&quot; +&quot;\'&quot;+&quot;CP301-1&quot;+&quot;\'&quot;+&quot; or course_id=&quot; +&quot;\'&quot; +&quot;CP301-2&quot; +&quot;\'&quot; +&quot; or course_id=&quot;+&quot;\'&quot;+&quot;CP301-3&quot;+&quot;\')&quot;+&quot; and status=&quot;+&quot;\'&quot;+&quot;completed&quot;+&quot;\'&quot;+&quot;and stu_id=&quot;+&quot;\'&quot;+id+&quot;\';&quot;;</span>
+<span class="fc" id="L26">            String query1=&quot;select sum(credits) from student_transcript where stu_id=&quot;+&quot;\'&quot;+id+&quot;\'&quot;+&quot; and (status='completed')&quot;;</span>
+<span class="fc" id="L27">            String pc=&quot;select sum(credits) from student_transcript where stu_id=&quot;+&quot;\'&quot;+id+&quot;\'&quot;+&quot; and type=&quot;+&quot;\'&quot;+&quot;PC&quot;+&quot;\'&quot;+&quot; and course_id!='CP301-1' and course_id!='CP301-2'and course_id!='CP301-3' and status='completed' &quot;;</span>
+<span class="fc" id="L28">            String pe=&quot;select sum(credits) from student_transcript where stu_id=&quot;+&quot;\'&quot;+id+&quot;\'&quot;+&quot; and type=&quot;+&quot;\'&quot;+&quot;PE&quot;+&quot;\'&quot;+&quot; and (status='completed')&quot;;</span>
+<span class="fc" id="L29">            String elec=&quot;select sum(credits) from student_transcript where stu_id=&quot;+&quot;\'&quot;+id+&quot;\'&quot;+&quot; and type=&quot;+&quot;\'&quot;+&quot;E&quot;+&quot;\'&quot;+&quot; and (status='completed')&quot;;</span>
+<span class="fc" id="L30">            System.out.println(query);</span>
+<span class="fc" id="L31">            System.out.println(pc);</span>
+<span class="fc" id="L32">              System.out.println(pe);</span>
+<span class="fc" id="L33">            System.out.println(elec);</span>
+<span class="fc" id="L34">            int a=0;</span>
+            try{
+<span class="fc" id="L36">                c = DriverManager.getConnection(DB_URL, USER, PASS);</span>
+<span class="fc" id="L37">                stmt = c.createStatement();</span>
+<span class="fc" id="L38">              ResultSet rs=stmt.executeQuery(query);</span>
+<span class="fc" id="L39">                rs.next();</span>
+<span class="fc" id="L40">                 a=rs.getInt(1);</span>
+<span class="fc" id="L41">rs.close();</span>
+<span class="fc" id="L42">                System.out.println(&quot;q1&quot;);</span>
+<span class="pc" id="L43">            } catch (Exception e) {}</span>
+
+<span class="pc bpc" id="L45" title="1 of 2 branches missed.">            if(a&lt;9) {x=false;System.out.println(&quot;BTP course not done so cant graduate!!&quot;);}</span>
+            else{
+<span class="fc" id="L47">                int tc=0,pc1=0,pe1=0,elec1=0;</span>
+                try{
+<span class="fc" id="L49">                    c = DriverManager.getConnection(DB_URL, USER, PASS);</span>
+<span class="fc" id="L50">                    stmt = c.createStatement();</span>
+<span class="fc" id="L51">                    ResultSet rs=stmt.executeQuery(query1);</span>
+<span class="fc" id="L52">                    rs.next();</span>
+<span class="fc" id="L53">                     tc=rs.getInt(1);</span>
+<span class="fc" id="L54">                     tc=tc-a;</span>
+<span class="fc" id="L55">                   System.out.println(tc);</span>
+<span class="fc" id="L56">                   rs.close();</span>
+<span class="pc" id="L57">                } catch (Exception e) {}</span>
+                try{
+<span class="fc" id="L59">                    c = DriverManager.getConnection(DB_URL, USER, PASS);</span>
+<span class="fc" id="L60">                    stmt = c.createStatement();</span>
+<span class="fc" id="L61">                   ResultSet rs=stmt.executeQuery(pc);</span>
+<span class="fc" id="L62">                    rs.next();</span>
+<span class="fc" id="L63">                     pc1=rs.getInt(1);</span>
+<span class="fc" id="L64">                    System.out.println(pc1);</span>
+<span class="fc" id="L65">                    rs.close();</span>
+                }
+<span class="pc" id="L67">                catch (Exception e) {}</span>
+                try{
+<span class="fc" id="L69">                    c = DriverManager.getConnection(DB_URL, USER, PASS);</span>
+<span class="fc" id="L70">                    stmt = c.createStatement();</span>
+<span class="fc" id="L71">                   ResultSet rs=stmt.executeQuery(pe);</span>
+<span class="fc" id="L72">                    rs.next();</span>
+<span class="fc" id="L73">                     pe1=rs.getInt(1);</span>
+<span class="fc" id="L74">                    System.out.println(pe1);</span>
+<span class="fc" id="L75">rs.close();</span>
+                }
+<span class="pc" id="L77">                catch (Exception e) {}</span>
+                try{
+<span class="fc" id="L79">                    c = DriverManager.getConnection(DB_URL, USER, PASS);</span>
+<span class="fc" id="L80">                    stmt = c.createStatement();</span>
+<span class="fc" id="L81">                   ResultSet rs=stmt.executeQuery(elec);</span>
+<span class="fc" id="L82">                    rs.next();</span>
+<span class="fc" id="L83">                     elec1=rs.getInt(1);</span>
+<span class="fc" id="L84">                    System.out.println(elec1);rs.close();</span>
+<span class="pc" id="L85">                } catch (Exception e) {}</span>
+<span class="pc bpc" id="L86" title="1 of 2 branches missed.">                if(tc&lt;120){x=false; System.out.println(&quot;Your total credits are less than 120 so can't graduate!!!&quot;);}</span>
+<span class="nc bnc" id="L87" title="All 2 branches missed.">                else if(pc1&lt;90) {x=false;System.out.println(&quot;Your program core  are less than 90 credits so can't graduate!!!&quot;);}</span>
+<span class="nc bnc" id="L88" title="All 2 branches missed.">                else if(pe1&lt;30){x=false;System.out.println(&quot;Your program elective  are less than 30 credits so can't graduate!!!&quot;);}</span>
+<span class="nc bnc" id="L89" title="All 2 branches missed.">                else if(elec1&lt;30){x=false;System.out.println(&quot;Your electives  are less than 30 credits so can't graduate!!!&quot;);}</span>
+                else{
+<span class="nc" id="L91">                    x=false;</span>
+<span class="nc" id="L92">                    System.out.println(&quot;Eligible for graduation&quot;);</span>
+<span class="fc" id="L93">                }stmt.close();c.close();</span>
+            }
+<span class="pc" id="L95">        } catch (Exception e) {System.err.println(e.getClass().getName() + &quot;: &quot; + e.getMessage());System.exit(0);}return x;}</span>
+
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.8.202204050719</span></div></body></html>

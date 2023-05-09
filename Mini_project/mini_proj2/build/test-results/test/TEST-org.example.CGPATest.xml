@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="org.example.CGPATest" tests="2" skipped="0" failures="0" errors="0" timestamp="2023-03-07T04:31:49" hostname="DESKTOP-HV7JIS6" time="1.442">
+  <properties/>
+  <testcase name="calc_sgpa()" classname="org.example.CGPATest" time="1.199"/>
+  <testcase name="calc_gpa()" classname="org.example.CGPATest" time="0.237"/>
+  <system-out><![CDATA[0.0
+Function executed successfully
+16.0
+]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>
